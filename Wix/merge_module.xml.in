@@ -70,7 +70,7 @@ C:\bin\wix-binaries\doc\wix.xsd">
 					<Component Id="fontconfigConfComponent" Guid="86D1A86C-C58E-4A59-8D71-F6C56C0ADA6C">
 						<File Id="fontsconf" Name="fonts.con" LongName="fonts.conf" src="etc\fonts\fonts.conf"/>
 						<File Id="localconf" Name="local.con" LongName="local.conf" src="etc\fonts\local.conf"/>
-						<RemoveFile Id="fontconfigCache" On="uninstall" LongName=".fonts.cache-1" Name="fonts.cac"/>
+						<RemoveFile Id="fontconfigCache" On="uninstall" Name="*" LongName=".fonts.cache-1"/>
 					</Component>
 				</Directory>
 			</Directory>
