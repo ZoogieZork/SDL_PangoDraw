@@ -1,11 +1,11 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL_Pango", "SDL_Pango.vcproj", "{0918007B-132B-48DA-B913-8257CB000199}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "basicmodule", "basicmodule\basicmodule.vcproj", "{6B50F866-1E76-4D1E-9F3F-22F446E67BD8}"
 	ProjectSection(ProjectDependencies) = postProject
+		{CA259558-1E66-4834-AF45-C5AE9D9AB43D} = {CA259558-1E66-4834-AF45-C5AE9D9AB43D}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testbench", "testbench\testbench.vcproj", "{4787711F-A383-4349-9CEE-FB9C16637113}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pjx", "pjx\pjx.vcproj", "{CA259558-1E66-4834-AF45-C5AE9D9AB43D}"
 	ProjectSection(ProjectDependencies) = postProject
-		{0918007B-132B-48DA-B913-8257CB000199} = {0918007B-132B-48DA-B913-8257CB000199}
 	EndProjectSection
 EndProject
 Global
@@ -14,14 +14,14 @@ Global
 		Release = Release
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
-		{0918007B-132B-48DA-B913-8257CB000199}.Debug.ActiveCfg = Debug|Win32
-		{0918007B-132B-48DA-B913-8257CB000199}.Debug.Build.0 = Debug|Win32
-		{0918007B-132B-48DA-B913-8257CB000199}.Release.ActiveCfg = Release|Win32
-		{0918007B-132B-48DA-B913-8257CB000199}.Release.Build.0 = Release|Win32
-		{4787711F-A383-4349-9CEE-FB9C16637113}.Debug.ActiveCfg = Debug|Win32
-		{4787711F-A383-4349-9CEE-FB9C16637113}.Debug.Build.0 = Debug|Win32
-		{4787711F-A383-4349-9CEE-FB9C16637113}.Release.ActiveCfg = Release|Win32
-		{4787711F-A383-4349-9CEE-FB9C16637113}.Release.Build.0 = Release|Win32
+		{6B50F866-1E76-4D1E-9F3F-22F446E67BD8}.Debug.ActiveCfg = Debug|Win32
+		{6B50F866-1E76-4D1E-9F3F-22F446E67BD8}.Debug.Build.0 = Debug|Win32
+		{6B50F866-1E76-4D1E-9F3F-22F446E67BD8}.Release.ActiveCfg = Release|Win32
+		{6B50F866-1E76-4D1E-9F3F-22F446E67BD8}.Release.Build.0 = Release|Win32
+		{CA259558-1E66-4834-AF45-C5AE9D9AB43D}.Debug.ActiveCfg = Debug|Win32
+		{CA259558-1E66-4834-AF45-C5AE9D9AB43D}.Debug.Build.0 = Debug|Win32
+		{CA259558-1E66-4834-AF45-C5AE9D9AB43D}.Release.ActiveCfg = Release|Win32
+		{CA259558-1E66-4834-AF45-C5AE9D9AB43D}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

@@ -1,0 +1,22 @@
+LIBRARY	pjx
+EXPORTS
+	pjx_layout_get_log_attrs
+	pjx_layout_move_cursor_visually
+	pjx_layout_get_line_count
+	pjx_layout_get_line
+	pjx_layout_get_lines
+	pjx_layout_get_iter
+	pjx_layout_get_extents
+	pjx_layout_set_markup
+	pjx_layout_set_markup_with_accel
+	pjx_parse_markup
+	pjx_attr_init
+	pjx_attr_destroy
+	pjx_attr_ruby
+	pjx_attr_rb
+	pjx_attr_rt
+	pjx_attr_ruby_new
+	pjx_attr_rb_new
+	pjx_attr_rt_new
+	pjx_attr_list_change
+	pjx_attr_get_from_list
