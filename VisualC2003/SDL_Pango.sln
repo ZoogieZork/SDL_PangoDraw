@@ -1,11 +1,15 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "basicmodule", "basicmodule\basicmodule.vcproj", "{6B50F866-1E76-4D1E-9F3F-22F446E67BD8}"
 	ProjectSection(ProjectDependencies) = postProject
-		{CA259558-1E66-4834-AF45-C5AE9D9AB43D} = {CA259558-1E66-4834-AF45-C5AE9D9AB43D}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pjx", "pjx\pjx.vcproj", "{CA259558-1E66-4834-AF45-C5AE9D9AB43D}"
 	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL_Pango", "SDL_Pango\SDL_Pango.vcproj", "{4250E40F-28F5-402F-A69C-FFD0C8334351}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CA259558-1E66-4834-AF45-C5AE9D9AB43D} = {CA259558-1E66-4834-AF45-C5AE9D9AB43D}
 	EndProjectSection
 EndProject
 Global
@@ -22,6 +26,10 @@ Global
 		{CA259558-1E66-4834-AF45-C5AE9D9AB43D}.Debug.Build.0 = Debug|Win32
 		{CA259558-1E66-4834-AF45-C5AE9D9AB43D}.Release.ActiveCfg = Release|Win32
 		{CA259558-1E66-4834-AF45-C5AE9D9AB43D}.Release.Build.0 = Release|Win32
+		{4250E40F-28F5-402F-A69C-FFD0C8334351}.Debug.ActiveCfg = Debug|Win32
+		{4250E40F-28F5-402F-A69C-FFD0C8334351}.Debug.Build.0 = Debug|Win32
+		{4250E40F-28F5-402F-A69C-FFD0C8334351}.Release.ActiveCfg = Release|Win32
+		{4250E40F-28F5-402F-A69C-FFD0C8334351}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

@@ -21,7 +21,7 @@
 
     @author NAKAMURA Ken'ichi
     @date   2004/08/26
-    $Revision: 1.3 $
+    $Revision: 1.4 $
 */
 
 #ifndef SDL_PANGO_H
@@ -169,6 +169,11 @@ extern DECLSPEC void SDLCALL SDLPango_SetLanguage(
 extern DECLSPEC void SDLCALL SDLPango_SetBaseDirection(
     SDLPango_Context *context,
     SDLPango_Direction direction);
+
+extern DECLSPEC void SDLCALL SDLPango_SetMinLineHeight(
+    SDLPango_Context *context,
+    int line_height);
+
 
 
 #ifdef __FT2_BUILD_UNIX_H__

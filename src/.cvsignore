@@ -1,4 +1,5 @@
 Makefile.in
+SDL_Pango.aps
 .deps
 .libs
 libSDL_Pango.la

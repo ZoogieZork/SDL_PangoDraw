@@ -2,8 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="pjx"
-	ProjectGUID="{CA259558-1E66-4834-AF45-C5AE9D9AB43D}"
+	Name="SDL_Pango"
+	ProjectGUID="{4250E40F-28F5-402F-A69C-FFD0C8334351}"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
@@ -19,8 +19,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\..\Prereq\include"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;PJX_EXPORTS"
+				AdditionalIncludeDirectories="..\..\pjx;..\..\..\Prereq\include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;SDL_PANGO_EXPORTS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -32,15 +32,15 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="fontconfig-1.lib freetype.lib glib-2.0-0.lib gmodule-2.0-0.lib gobject-2.0-0.lib gthread-2.0-0.lib pango-1.0-0.lib pangoft2-1.0-0.lib pangowin32-1.0-0.lib"
-				OutputFile="$(OutDir)/pjx.dll"
+				AdditionalDependencies="SDL.lib fontconfig-1.lib freetype.lib glib-2.0-0.lib gmodule-2.0-0.lib gobject-2.0-0.lib gthread-2.0-0.lib pango-1.0-0.lib pangoft2-1.0-0.lib pangowin32-1.0-0.lib"
+				OutputFile="$(OutDir)/SDL_Pango.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\Prereq\lib"
-				ModuleDefinitionFile="..\..\pjx\pjx.def"
+				ModuleDefinitionFile="..\..\src\SDL_Pango.def"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)/pjx.pdb"
+				ProgramDatabaseFile="$(OutDir)/SDL_Pango.pdb"
 				SubSystem="2"
-				ImportLibrary="$(OutDir)/pjx.lib"
+				ImportLibrary="$(OutDir)/SDL_Pango.lib"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"/>
@@ -71,8 +71,8 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\Prereq\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;PJX_EXPORTS"
+				AdditionalIncludeDirectories="..\..\pjx;..\..\..\Prereq\include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;SDL_PANGO_EXPORTS"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -82,16 +82,16 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="fontconfig-1.lib freetype.lib glib-2.0-0.lib gmodule-2.0-0.lib gobject-2.0-0.lib gthread-2.0-0.lib pango-1.0-0.lib pangoft2-1.0-0.lib pangowin32-1.0-0.lib"
-				OutputFile="$(OutDir)/pjx.dll"
+				AdditionalDependencies="SDL.lib fontconfig-1.lib freetype.lib glib-2.0-0.lib gmodule-2.0-0.lib gobject-2.0-0.lib gthread-2.0-0.lib pango-1.0-0.lib pangoft2-1.0-0.lib pangowin32-1.0-0.lib"
+				OutputFile="$(OutDir)/SDL_Pango.dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\Prereq\lib"
-				ModuleDefinitionFile="..\..\pjx\pjx.def"
+				ModuleDefinitionFile="..\..\src\SDL_Pango.def"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(OutDir)/pjx.lib"
+				ImportLibrary="$(OutDir)/SDL_Pango.lib"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"/>
@@ -123,16 +123,10 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
-				RelativePath="..\..\pjx\pjx-attributes.c">
+				RelativePath="..\..\src\SDL_Pango.c">
 			</File>
 			<File
-				RelativePath="..\..\pjx\pjx-layout.c">
-			</File>
-			<File
-				RelativePath="..\..\pjx\pjx-markup.c">
-			</File>
-			<File
-				RelativePath="..\..\pjx\pjx.def">
+				RelativePath="..\..\src\SDL_Pango.def">
 			</File>
 		</Filter>
 		<Filter
@@ -140,22 +134,19 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
-				RelativePath="..\..\pjx\pjx-attributes.h">
+				RelativePath="..\..\src\resource.h">
 			</File>
 			<File
-				RelativePath="..\..\pjx\pjx-layout.h">
-			</File>
-			<File
-				RelativePath="..\..\pjx\pjx-markup-private.h">
-			</File>
-			<File
-				RelativePath="..\..\pjx\pjx.h">
+				RelativePath="..\..\src\SDL_Pango.h">
 			</File>
 		</Filter>
 		<Filter
 			Name="リソース ファイル"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+			<File
+				RelativePath="..\..\src\SDL_Pango.rc">
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

@@ -4,6 +4,7 @@
 	Version="7.10"
 	Name="basicmodule"
 	ProjectGUID="{6B50F866-1E76-4D1E-9F3F-22F446E67BD8}"
+	RootNamespace="basicmodule"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
@@ -23,7 +24,7 @@
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;BASICMODULE_EXPORTS;G_LOG_DOMAIN=\&quot;Pango\&quot;;G_DISABLE_DEPRECATED;PANGO_ENABLE_ENGINE"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
@@ -45,7 +46,8 @@
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCPostBuildEventTool"
+				CommandLine="install.bat $(TargetPath)"/>
 			<Tool
 				Name="VCPreBuildEventTool"/>
 			<Tool
@@ -73,7 +75,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\Prereq\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;BASICMODULE_EXPORTS;G_LOG_DOMAIN=\&quot;Pango\&quot;;G_DISABLE_DEPRECATED;PANGO_ENABLE_ENGINE"
-				RuntimeLibrary="0"
+				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
@@ -96,7 +98,8 @@
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCPostBuildEventTool"
+				CommandLine="install.bat $(TargetPath)"/>
 			<Tool
 				Name="VCPreBuildEventTool"/>
 			<Tool

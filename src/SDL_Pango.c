@@ -223,11 +223,14 @@
 
     @author NAKAMURA Ken'ichi
     @date   2004/12/07
-    $Revision: 1.6 $
+    $Revision: 1.7 $
 */
 
 #include <pango/pango.h>
 #include <pango/pangoft2.h>
+#include "pjx.h"
+#include "pjx-layout.h"
+#include "pjx-attributes.h"
 
 #include "SDL_Pango.h"
 
@@ -283,6 +286,7 @@ typedef struct _contextImpl {
     SDLPango_Matrix color_matrix;
     int min_width;
     int min_height;
+    int min_lineheight;
 } contextImpl;
 
 
@@ -299,6 +303,8 @@ int
 SDLPango_Init()
 {
     g_type_init();
+
+    pjx_attr_init ();
 
     IS_INITIALIZED = -1;
 
@@ -549,7 +555,8 @@ drawLine(
 		x + PANGO_PIXELS (x_off + logical_rect.x),
 		x + PANGO_PIXELS (x_off + logical_rect.x + logical_rect.width));
 
-	x_off += logical_rect.width;
+	if (! pjx_attr_get_from_list(run->item->analysis.extra_attrs, PJX_ATTR_RB))
+	    x_off += logical_rect.width;
     }
 }
 
@@ -706,10 +713,10 @@ SDLPango_CopyFTBitmapToSurface(
 
 	    switch(surface->format->BytesPerPixel) {
 	    case 2:
-		((Uint16 *)p_sdl)[k + x] = (Uint16)SDL_MapRGBA(surface->format, pixel[0], pixel[1], pixel[2], pixel[3]);
+		((Uint16 *)p_sdl)[k + x] |= (Uint16)SDL_MapRGBA(surface->format, pixel[0], pixel[1], pixel[2], pixel[3]);
 		break;
 	    case 4:
-		((Uint32 *)p_sdl)[k + x] = SDL_MapRGBA(surface->format, pixel[0], pixel[1], pixel[2], pixel[3]);
+		((Uint32 *)p_sdl)[k + x] |= SDL_MapRGBA(surface->format, pixel[0], pixel[1], pixel[2], pixel[3]);
 		break;
 	    default:
 		SDL_SetError("surface->format->BytesPerPixel is invalid value");
@@ -757,6 +764,7 @@ SDLPango_CreateContext()
 
     context->min_height = 0;
     context->min_width = 0;
+    context->min_lineheight = 0;
 
     return context;
 }
@@ -861,6 +869,8 @@ SDLPango_Draw(
     PangoLayoutIter *iter;
     PangoRectangle logical_rect;
     int width, height;
+    int last_baseline = 0;
+    int y_diff = 0;
 
     if(! surface) {
 	SDL_SetError("surface is NULL");
@@ -891,14 +901,18 @@ SDLPango_Draw(
 	pango_layout_iter_get_line_extents (iter, NULL, &logical_rect);
 	baseline = pango_layout_iter_get_baseline (iter);
 
+	if (PANGO_PIXELS (baseline - last_baseline) < context->min_lineheight)
+	    y_diff += context->min_lineheight * PANGO_SCALE - (baseline - last_baseline);
+
 	drawLine(
 	    context,
 	    surface,
 	    line,
 	    x + PANGO_PIXELS (logical_rect.x),
-	    y + PANGO_PIXELS (logical_rect.y),
+	    y + PANGO_PIXELS (logical_rect.y + y_diff),
 	    PANGO_PIXELS (logical_rect.height),
 	    PANGO_PIXELS (baseline - logical_rect.y));
+	last_baseline = baseline;
     } while (pango_layout_iter_next_line (iter));
 
     pango_layout_iter_free (iter);
@@ -1025,11 +1039,39 @@ int
 SDLPango_GetLayoutHeight(
     SDLPango_Context *context)
 {
-    PangoRectangle logical_rect;
+/*    PangoRectangle logical_rect;
 
     pango_layout_get_extents (context->layout, NULL, &logical_rect);
 
     return PANGO_PIXELS (logical_rect.height);
+*/
+    PangoLayoutIter *iter;
+    PangoRectangle logical_rect;
+    int last_baseline = 0;
+    int y_diff = 0;
+
+    iter = pango_layout_get_iter (context->layout);
+
+    do {
+	PangoLayoutLine *line;
+	int baseline;
+
+	line = pango_layout_iter_get_line (iter);
+
+	pango_layout_iter_get_line_extents (iter, NULL, &logical_rect);
+	baseline = pango_layout_iter_get_baseline (iter);
+
+	if (PANGO_PIXELS (baseline - last_baseline) < context->min_lineheight)
+	    y_diff += context->min_lineheight * PANGO_SCALE - (baseline - last_baseline);
+
+	last_baseline = baseline;
+    } while (pango_layout_iter_next_line (iter));
+
+    pango_layout_iter_free (iter);
+
+    pango_layout_get_extents (context->layout, NULL, &logical_rect);
+
+    return PANGO_PIXELS (logical_rect.height + y_diff);
 }
 
 /*!
@@ -1172,4 +1214,17 @@ PangoLayout* SDLCALL SDLPango_GetPangoLayout(
     SDLPango_Context *context)
 {
     return context->layout;
+}
+
+/*!
+    Set minimum line height.
+
+    @param *context [i/o] Context
+    @param line_height [in] line height (pixel)
+*/
+void SDLCALL SDLPango_SetMinLineHeight(
+    SDLPango_Context *context,
+    int line_height)
+{
+    context->min_lineheight = line_height;
 }
