@@ -12,6 +12,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL_Pango", "SDL_Pango\SDL_
 		{CA259558-1E66-4834-AF45-C5AE9D9AB43D} = {CA259558-1E66-4834-AF45-C5AE9D9AB43D}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testbench", "testbench\testbench.vcproj", "{64006E0E-E36F-4F39-8071-B289A121AF64}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4250E40F-28F5-402F-A69C-FFD0C8334351} = {4250E40F-28F5-402F-A69C-FFD0C8334351}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -30,6 +35,10 @@ Global
 		{4250E40F-28F5-402F-A69C-FFD0C8334351}.Debug.Build.0 = Debug|Win32
 		{4250E40F-28F5-402F-A69C-FFD0C8334351}.Release.ActiveCfg = Release|Win32
 		{4250E40F-28F5-402F-A69C-FFD0C8334351}.Release.Build.0 = Release|Win32
+		{64006E0E-E36F-4F39-8071-B289A121AF64}.Debug.ActiveCfg = Debug|Win32
+		{64006E0E-E36F-4F39-8071-B289A121AF64}.Debug.Build.0 = Debug|Win32
+		{64006E0E-E36F-4F39-8071-B289A121AF64}.Release.ActiveCfg = Release|Win32
+		{64006E0E-E36F-4F39-8071-B289A121AF64}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
