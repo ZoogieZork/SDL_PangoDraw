@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi" xmlns:dx="http://tempuri.org/2003/01/dx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/wix/2003/01/wi
-C:\bin\wix-binaries-2.0.2007.0\doc\wix.xsd">
+C:\bin\wix-binaries\doc\wix.xsd">
 	<Module Guid="4EB80297-FF73-4DD1-A9A7-70CAAAC5E897" Id="SDL_Pango" Language="1033" Version="0.1.1.0910">
 		<Package Id="CAFC8D5C-59AF-48D0-9BCD-EACA122DFA5F" Description="SDL module for text rendering" Comments="SDL module for text rendering" Manufacturer="NAKAMURA Ken'ichi" InstallerVersion="200" Compressed="yes"/>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Component Id="Glib2Component" Guid="46B19B88-77C4-4EF3-9629-8C136337B0D5">
+				<File Id="glib2README" Name="glib2.REA" LongName="glib2.README" src="glib2.README"/>
 				<File Id="libglib2dll" Name="libglib2.dll" LongName="libglib-2.0-0.dll" src="bin\libglib-2.0-0.dll"/>
 				<File Id="libgmodule2dll" Name="libgmod2.dll" LongName="libgmodule-2.0-0.dll" src="bin\libgmodule-2.0-0.dll"/>
 				<File Id="libgobject2" Name="libgobj2.dll" LongName="libgobject-2.0-0.dll" src="bin\libgobject-2.0-0.dll"/>
 				<File Id="libgthread2dll" Name="libgthr2.dll" LongName="libgthread-2.0-0.dll" src="bin\libgthread-2.0-0.dll"/>
 			</Component>
 			<Component Id="libiconvComponent" Guid="C3AD4015-DF69-4705-9B7D-AB6ED6E73B20">
+				<File Id="libiconvREADME" Name="libiconv.REA" LongName="libiconv.README" src="libiconv.README"/>
 				<File Id="iconvdll" Name="libiconv.dll" LongName="libiconv-2.dll" src="bin\libiconv-2.dll"/>
 				<File Id="charsetdll" Name="libchars.dll" LongName="libcharset-1.dll" src="bin\libcharset-1.dll"/>
 			</Component>
 			<Component Id="libintlComponent" Guid="EFE57ADF-F190-40A7-B7E1-C4B66C620BB9">
+				<File Id="gettextREADME" Name="gettext.REA" LongName="gettext.README" src="gettext.README"/>
 				<File Id="libintldll" Name="libintl.dll" LongName="libintl-3.dll" src="bin\libintl-3.dll"/>
 			</Component>
 			<Component Id="expatComponent" Guid="C782A323-E375-4CF8-BB4A-45D5F4555964">
@@ -31,6 +34,7 @@ C:\bin\wix-binaries-2.0.2007.0\doc\wix.xsd">
 				<File Id="fclist" Name="fc-list.exe" LongName="fc-list.exe" src="bin\fc-list.exe"/>
 			</Component>
 			<Component Id="PangoMainComponent" Guid="6523B656-1A89-4D30-AD65-F1AC73267F24">
+				<File Id="pangoREADME" Name="pango.REA" LongName="pango.README" src="pango.README"/>
 				<File Id="libpangodll" Name="libpango.dll" LongName="libpango-1.0-0.dll" src="bin\libpango-1.0-0.dll"/>
 				<File Id="libpangoof2dll" Name="libpaft2.dll" LongName="libpangoft2-1.0-0.dll" src="bin\libpangoft2-1.0-0.dll"/>
 				<File Id="libpangowin32dll" Name="libpawin.dll" LongName="libpangowin32-1.0-0.dll" src="bin\libpangowin32-1.0-0.dll"/>

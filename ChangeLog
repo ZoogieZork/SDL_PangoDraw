@@ -1,3 +1,9 @@
+2004-09-21 NAKAMURA Ken'ichi   <nakamura@sbp.fp.a.u-tokyo.ac.jp>
+
+	* Environment variable setup is deleted from SDL_Pango_Develop_VC2003.msi.
+	- Related documents are fixed.
+	* SDL_Pango_testbench.msi's shortcut problem is fixed.
+
 2004-09-07  NAKAMURA Ken'ichi  <nakamura@sbp.fp.a.u-tokyo.ac.jp>
 
 	* Initial version.

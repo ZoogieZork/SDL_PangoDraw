@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Taba (Kagura Security Service) -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi" xmlns:dx="http://tempuri.org/2003/01/dx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/wix/2003/01/wi
-C:\bin\wix-binaries-2.0.2007.0\doc\wix.xsd">
-	<Product UpgradeCode="40250581-AE04-4D70-9479-F612935D2643" Name="SDL_Pango Development" Id="0123F718-DC3D-4DE6-8C1F-61E734B9BF00" Version="0.1.1" Manufacturer="NAKAMURA Ken'ichi" Language="1033">
-		<Package Id="BC07B85A-B8AC-4604-BA82-503CF96AD59D" Manufacturer="NAKAMURA Ken'ichi" InstallerVersion="200" Platforms="Intel" Languages="1033" Compressed="yes" SummaryCodepage="437"/>
+C:\bin\wix-binaries\doc\wix.xsd">
+	<Product UpgradeCode="40250581-AE04-4D70-9479-F612935D2643" Name="SDL_Pango Development" Id="0123F718-DC3D-4DE6-8C1F-61E734B9BF00" Version="0.1.1.20040921" Manufacturer="NAKAMURA Ken'ichi" Language="1033">
+		<Package Id="????????-????-????-????-????????????" Manufacturer="NAKAMURA Ken'ichi" InstallerVersion="200" Platforms="Intel" Languages="1033" Compressed="yes" SummaryCodepage="437"/>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Merge Id="SDL_PangoModule" Language="1033" DiskId="1" src="SDL_Pango.msm"/>
 			<Component Id="C__4B3D7A33985D4D6ABB6938C76FCBD6E6" Guid="AF801100-9645-1133-D005-B308AE53C53B">
-				<Environment Id="LIBEnvironment" Name="LIB" Value="[TARGETDIR]import_lib" Action="set" Permanent="no" System="yes" Part="last"/>
-				<Environment Id="INCLUDEEnvironment" Name="INCLUDE" Value="[TARGETDIR]include" Action="set" Permanent="no" System="yes" Part="last"/>
 				<File Id="_4B3D7A33985D4D6ABB6938C76FCBD6E6" Name="COPYING.TXT" LongName="COPYING.txt" Vital="yes" KeyPath="yes" DiskId="1" src="COPYING.txt"/>
 				<Shortcut Id="_8152DCDC0F7E4025A6FF7776F7A39771" Directory="sdlpangoDir" Name="COPYING" LongName="COPYING" Target="DefaultFeature" Show="normal" WorkingDirectory="TARGETDIR"/>
 			</Component>
