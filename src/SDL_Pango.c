@@ -223,7 +223,7 @@
 
     @author NAKAMURA Ken'ichi
     @date   2004/08/26
-    $Revision: 1.4 $
+    $Revision: 1.5 $
 */
 
 #include <pango/pango.h>
@@ -1136,4 +1136,22 @@ void SDLCALL SDLPango_SetBaseDirection(
     }
 
     pango_context_set_base_dir (context->context, pango_dir);
+}
+
+PangoFontMap* SDLCALL SDLPango_GetPangoFontMap(
+    SDLPango_Context *context)
+{
+    return context->font_map;
+}
+
+PangoFontDescription* SDLCALL SDLPango_GetPangoFontDescription(
+    SDLPango_Context *context)
+{
+    return context->font_desc;
+}
+
+PangoLayout* SDLCALL SDLPango_GetPangoLayout(
+    SDLPango_Context *context)
+{
+    return context->layout;
 }

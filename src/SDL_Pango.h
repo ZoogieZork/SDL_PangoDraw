@@ -21,7 +21,7 @@
 
     @author NAKAMURA Ken'ichi
     @date   2004/08/26
-    $Revision: 1.1 $
+    $Revision: 1.2 $
 */
 
 #ifndef SDL_PANGO_H
@@ -170,6 +170,19 @@ extern DECLSPEC void SDLCALL SDLPango_CopyFTBitmapToSurface(
 
 #endif	/* __FT2_BUILD_UNIX_H__ */
 
+
+#ifdef __PANGO_H__
+
+extern DECLSPEC PangoFontMap* SDLCALL SDLPango_GetPangoFontMap(
+    SDLPango_Context *context);
+
+extern DECLSPEC PangoFontDescription* SDLCALL SDLPango_GetPangoFontDescription(
+    SDLPango_Context *context);
+
+extern DECLSPEC PangoLayout* SDLCALL SDLPango_GetPangoLayout(
+    SDLPango_Context *context);
+
+#endif /* __PANGO_H__ */
 
 
 #ifdef __cplusplus
