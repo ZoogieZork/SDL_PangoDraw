@@ -45,7 +45,8 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				CommandLine="mkdir testbench\Debug
-copy Debug\SDL_Pango.dll testbench\Debug"/>
+copy Debug\SDL_Pango.dll testbench\Debug
+"/>
 			<Tool
 				Name="VCPreBuildEventTool"/>
 			<Tool
@@ -116,7 +117,7 @@ copy Debug\SDL_Pango.dll testbench\Debug"/>
 	</References>
 	<Files>
 		<Filter
-			Name="ソース ファイル"
+			Name="Source File"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
@@ -127,7 +128,7 @@ copy Debug\SDL_Pango.dll testbench\Debug"/>
 			</File>
 		</Filter>
 		<Filter
-			Name="ヘッダー ファイル"
+			Name="Header File"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
