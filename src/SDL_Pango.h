@@ -21,7 +21,7 @@
 
     @author NAKAMURA Ken'ichi
     @date   2004/08/26
-    $Revision: 1.2 $
+    $Revision: 1.3 $
 */
 
 #ifndef SDL_PANGO_H
@@ -86,6 +86,17 @@ const SDLPango_Matrix _MATRIX_TRANSPARENT_BACK_WHITE_LETTER
     Specifies transparent back and white letter.
 */
 const SDLPango_Matrix *MATRIX_TRANSPARENT_BACK_WHITE_LETTER = &_MATRIX_TRANSPARENT_BACK_WHITE_LETTER;
+
+const SDLPango_Matrix _MATRIX_TRANSPARENT_BACK_TRANSPARENT_LETTER
+    = {255, 255, 0, 0,
+       255, 255, 0, 0,
+       255, 255, 0, 0,
+       0, 0, 0, 0,};
+/*!
+    Specifies transparent back and transparent letter.
+    This is useful for KARAOKE like rendering.
+*/
+const SDLPango_Matrix *MATRIX_TRANSPARENT_BACK_TRANSPARENT_LETTER = &_MATRIX_TRANSPARENT_BACK_TRANSPARENT_LETTER;
 
 /*!
     Specifies direction of text. See Pango reference for detail

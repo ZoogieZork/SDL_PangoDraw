@@ -222,8 +222,8 @@
     @brief Implementation of SDL_Pango
 
     @author NAKAMURA Ken'ichi
-    @date   2004/08/26
-    $Revision: 1.5 $
+    @date   2004/12/07
+    $Revision: 1.6 $
 */
 
 #include <pango/pango.h>
@@ -1138,18 +1138,36 @@ void SDLCALL SDLPango_SetBaseDirection(
     pango_context_set_base_dir (context->context, pango_dir);
 }
 
+/*!
+    Get font map from context.
+
+    @param *context [in] Context
+    @return Font map
+*/
 PangoFontMap* SDLCALL SDLPango_GetPangoFontMap(
     SDLPango_Context *context)
 {
     return context->font_map;
 }
 
+/*!
+    Get font description from context.
+
+    @param *context [in] Context
+    @return Font description
+*/
 PangoFontDescription* SDLCALL SDLPango_GetPangoFontDescription(
     SDLPango_Context *context)
 {
     return context->font_desc;
 }
 
+/*!
+    Get layout from context.
+
+    @param *context [in] Context
+    @return Layout
+*/
 PangoLayout* SDLCALL SDLPango_GetPangoLayout(
     SDLPango_Context *context)
 {

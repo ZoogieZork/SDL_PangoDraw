@@ -1,3 +1,5 @@
 Debug
 Release
 SDL_Pango.aps
+Makefile
+Makefile.in

@@ -1,1 +1,6 @@
 Makefile.in
+.deps
+.libs
+libSDL_Pango.la
+Makefile
+SDL_Pango.lo
