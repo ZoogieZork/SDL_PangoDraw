@@ -74,9 +74,7 @@
 
     In Windows and VS2003, I strongly recommend you to install MSI package. It contains Pango 
     and fontconfig binaries which are modified as side-by-side components. It is 
-    nearly impossible to build them. (I spent much time to build them...) The MSI 
-    package also sets up environment variables. You can use SDL_Pango without any 
-    configuration. But you must set up SDL header and library by yourself.
+    nearly impossible to build them. (I spent much time to build them...)
 
     In MinGW, I recommend you to use VS2003. Otherwise you may run into the maze of 
     distribution. If you insist MinGW, you should use MinGW binary archive.
@@ -225,7 +223,7 @@
 
     @author NAKAMURA Ken'ichi
     @date   2004/08/26
-    $Revision: 1.3 $
+    $Revision: 1.4 $
 */
 
 #include <pango/pango.h>
