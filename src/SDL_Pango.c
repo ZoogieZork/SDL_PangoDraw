@@ -22,12 +22,12 @@
     \section intro Introduction
 
     Pango is the text rendering engine of GNOME 2.x. SDL_Pango connects the 
-    engine to SDL. In Windows, pre-built binary distribution (MSI package) 
-    contains Pango and many other binaries.
+    engine to SDL. In Windows, pre-built binary package (MSI and merge module) 
+    is provided.
 
     \subsection dist Distribution
 
-    If you are a game software developer, you will know the difficulties of 
+    If you are a game software developer, you should know the difficulties of 
     distribution. So I will start to introduce SDL_Pango from the viewpoint 
     of distribution.
 
@@ -36,22 +36,23 @@
     modules. If you use SDL_Pango, your software will require those modules 
     installed to target system. If your software is shipped as shrink-wrap 
     package, it may cause much problem on your support desk. You should 
-    carefully design a installation process.
+    carefully design your installation process.
 
     In Windows, SDL_Pango is distributed as "merge module" which contains 
-    fontconfig and Pango. You must use Windows Installer and merge the module 
-    on your package. The merge module not only contains files, but also includes 
-    setup script which must be run on target machine. Windows Installer 
-    automatically run the script.
+    fontconfig and Pango. Those binaries are modified as side-by-side components.
+    You should use Windows Installer and merge the module 
+    on your MSI package. The merge module not only contains files, but also includes 
+    custom action which must be run at installation.
 
     \subsection api High-level API
 
     From the viewpoint of text rendering, the heart of SDL_Pango is high-level API. 
     Other text rendering APIs, like DrawText() of Windows, font and text must be 
-    specified separately. In SDL_Pango, font specification is embedded in text:
+    specified separately. In SDL_Pango, font specification is embedded in text like 
+    HTML:
 
     \code
-    <span font="Times"><i>This is Times and italic.</i></span>
+    <span font_family="Courier New"><i>This is Courier New and italic.</i></span>
     \endcode
 
     Color, size, subscript/superscript, obliquing, weight, and other many features 
@@ -60,8 +61,8 @@
     \subsection i18n Internationalized Text
 
     Internationalized text is another key feature. Text is specified by UTF-8. RTL 
-    script (Arabic and Hebrew) and complicated rendering (Arabic and Indic) are 
-    supported. You can see for yourself with GNOME 2.x.
+    script (Arabic and Hebrew) and complicated rendering (Arabic, Indic and Thai) are 
+    supported. You can see it with GNOME 2.x.
 
     \section get Getting Started
 
@@ -69,10 +70,16 @@
 
     Get latest files from http://sourceforge.net/projects/sdlpango/ .
 
-    \subsection install Install
+    \subsection install Install Header and Library
 
-    In Windows, I strongly recommend you to install MSI package. It contains Pango 
-    and fontconfig binaries. It is nearly impossible to build them.
+    In Windows and VS2003, I strongly recommend you to install MSI package. It contains Pango 
+    and fontconfig binaries which are modified as side-by-side components. It is 
+    nearly impossible to build them. (I spent much time to build them...) The MSI 
+    package also sets up environment variables. You can use SDL_Pango without any 
+    configuration. But you must set up SDL header and library by yourself.
+
+    In MinGW, I recommend you to use VS2003. Otherwise you may run into the maze of 
+    distribution. If you insist MinGW, you should use MinGW binary archive.
 
     In Un*x, installation consists of: 
 
@@ -91,8 +98,8 @@
     #include "SDL_Pango.h"
     \endcode
 
-    In Windows, SDL_Pango.h is installed on \c \%ProgramFiles\%\\SDL_Pango_devel\\include 
-    (usually \c C:\\Program \c Files\\SDL_Pango_devel\\include). You should add this 
+    In Windows, SDL_Pango.h is installed on \c \%ProgramFiles\%\\SDL_Pango \c Development\\include 
+    (usually \c C:\\Program \c Files\\SDL_Pango \c Development\\include). You should add this 
     directory to include path.
 
     \subsection comp Compiling
@@ -116,22 +123,24 @@
     cc -o myprogram mysource.o `sdl-config --libs` -lSDL_Pango
     \endcode
 
-    Now myprogram is ready to run.
+    Now myprogram is ready to run. 
+    
+    You can see a sample of autoconfiscation in 'test' directory.
 
-    In Windows, MSI package installs many dlls to \c \%ProgramFiles\%\\SDL_Pango_devel\\import_lib. 
+    In Windows, MSI package installs many dlls to \c \%ProgramFiles\%\\SDL_Pango \c Development\\import_lib. 
     To link with SDL_Pango you should use SDL_Pango.lib.
 
     SDL_Pango.dll depends on many dlls and other many files. Those dlls are installed on 
-    \c \%ProgramFiles\%\\SDL_Pango_devel\\bin. MSI package adds the directory to PATH environment 
+    \c \%ProgramFiles\%\\SDL_Pango \c Development\\bin. MSI package adds the directory to PATH environment 
     variable.
 
-    \section devel Develop
+    \section devel Development
 
     \subsection font Font Handling
 
     In Un*x, font handling depends on fontconfig of your system.
 
-    In Windows, local.conf of fontconfig is placed on \c \%ProgramFiles\%\\SDL_Pango_devel\\etc\\fonts. 
+    In Windows, local.conf of fontconfig is placed on \c \%ProgramFiles\%\\SDL_Pango \c Development\\etc\\fonts. 
     You should know about fontconfig's font cache mechanism.
 
     \subsection example Step-by-step Example
@@ -200,7 +209,8 @@
     In Windows, font files must be installed on apprication folder (usually 
     \c C:\\Program \c Files\\[Manufacturer]\\[ProductName]). The property of 
     apprication folder must be \c TARGETDIR (this is default setting of VS2003). 
-    Add SDL_Pango.msm to your MSI package.
+    SDL.dll also must be installed on apprication folder. Add SDL_Pango.msm to 
+    your MSI package.
 
     \section ack Acknowledgment
 
@@ -215,7 +225,7 @@
 
     @author NAKAMURA Ken'ichi
     @date   2004/08/26
-    $Revision: 1.2 $
+    $Revision: 1.3 $
 */
 
 #include <pango/pango.h>
