@@ -1,0 +1,27 @@
+<big>[Mouse]</big>
+Left:
+	Rotate Scene
+Right:
+	Rotate Light
+Wheel:
+	VScroll Text
+Ctrl+Wheel:
+	HScroll Text
+Alt+Wheel:
+	Zoom
+
+<big>[Keyboard]</big>
+Escape:
+	Quit
+Ctrl+Digit:
+	Load Text
+Ctrl+m:
+	Markup Mode
+Ctrl+t:
+	Text Mode
+Backspace:
+	Delete Char
+Ctrl+Backspace:
+	Delete Line
+Other:
+	Input Char

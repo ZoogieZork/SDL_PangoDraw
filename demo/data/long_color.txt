@@ -1,0 +1,32 @@
+<span foreground="#FFFFFF">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#FF0000">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#00FF00">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#0000FF">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#FFFFFF">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#FF0000">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#00FF00">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#0000FF">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#FFFFFF">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#FF0000">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#00FF00">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#0000FF">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#FFFFFF">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#FF0000">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#00FF00">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
+<span foreground="#0000FF">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyz0123456789</span>
