@@ -1,0 +1,7 @@
+<span face="MS Gothic">【デモの説明】
+ウィンドウサイズを変更すると、それに合わせてインタラクティブに組版が行われます。また、demo_data/target.txtを編集してみてください。保存すると、自動的に読みこみが行われます。 </span>
+
+<span face="MS Gothic">【ルビの例】</span>
+<span face="MS Mincho">その<ruby><rb>日</rb><rt>ひ</rt></ruby>から<ruby><rb>先</rb><rt>さき</rt></ruby>、<ruby><rb>私</rb><rt>わたし</rt></ruby>が<ruby><rb>親</rb><rt>した</rt></ruby>しくしていたものは<ruby><rb>残</rb><rt>のこ</rt></ruby>らずこの<ruby><rb>町</rb><rt>まち</rt></ruby>からいなくなった。しかしアメリカ<ruby><rb>人</rb><rt>じん</rt></ruby>だけは<ruby><rb>別</rb><rt>べつ</rt></ruby>だ。アメリカ<ruby><rb>人</rb><rt>じん</rt></ruby>にさようならを<ruby><rb>言</rb><rt>い</rt></ruby>う<ruby><rb>方法</rb><rt>ほうほう</rt></ruby>を、<ruby><rb>人類</rb><rt>じんるい</rt></ruby>はいまだに<ruby><rb>発明</rb><rt>はつめい</rt></ruby>していない。
+（矢作俊彦、ロング・グッドバイ、角川書店）
+</span>

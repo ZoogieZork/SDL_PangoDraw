@@ -17,6 +17,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testbench", "testbench\test
 		{4250E40F-28F5-402F-A69C-FFD0C8334351} = {4250E40F-28F5-402F-A69C-FFD0C8334351}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xDemoNieves", "xDemoNieves\xDemoNieves.vcproj", "{B43D9732-8165-4D25-AC41-D2A738C3EA07}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4250E40F-28F5-402F-A69C-FFD0C8334351} = {4250E40F-28F5-402F-A69C-FFD0C8334351}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xDemoVapors", "xDemoVapors\xDemoVapors.vcproj", "{138B07D9-BA3A-4746-A42D-D4D7AD39D991}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4250E40F-28F5-402F-A69C-FFD0C8334351} = {4250E40F-28F5-402F-A69C-FFD0C8334351}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -39,6 +49,14 @@ Global
 		{64006E0E-E36F-4F39-8071-B289A121AF64}.Debug.Build.0 = Debug|Win32
 		{64006E0E-E36F-4F39-8071-B289A121AF64}.Release.ActiveCfg = Release|Win32
 		{64006E0E-E36F-4F39-8071-B289A121AF64}.Release.Build.0 = Release|Win32
+		{B43D9732-8165-4D25-AC41-D2A738C3EA07}.Debug.ActiveCfg = Debug|Win32
+		{B43D9732-8165-4D25-AC41-D2A738C3EA07}.Debug.Build.0 = Debug|Win32
+		{B43D9732-8165-4D25-AC41-D2A738C3EA07}.Release.ActiveCfg = Release|Win32
+		{B43D9732-8165-4D25-AC41-D2A738C3EA07}.Release.Build.0 = Release|Win32
+		{138B07D9-BA3A-4746-A42D-D4D7AD39D991}.Debug.ActiveCfg = Debug|Win32
+		{138B07D9-BA3A-4746-A42D-D4D7AD39D991}.Debug.Build.0 = Debug|Win32
+		{138B07D9-BA3A-4746-A42D-D4D7AD39D991}.Release.ActiveCfg = Release|Win32
+		{138B07D9-BA3A-4746-A42D-D4D7AD39D991}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
