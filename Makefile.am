@@ -1,4 +1,4 @@
-SUBDIRS = src
+SUBDIRS = src pjx
 DIST_SUBDIRS = src docs VisualC2003
 
 EXTRA_DIST = \

@@ -223,12 +223,11 @@
 
     @author NAKAMURA Ken'ichi
     @date   2004/12/07
-    $Revision: 1.7 $
+    $Revision: 1.8 $
 */
 
 #include <pango/pango.h>
 #include <pango/pangoft2.h>
-#include "pjx.h"
 #include "pjx-layout.h"
 #include "pjx-attributes.h"
 

@@ -13,3 +13,5 @@ libSDL_Pango_la_LDFLAGS = \
     -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 
 DISTCLEANFILES = *~ *~c *~h *.cross.cache inc
+
+INCLUDES = -I../pjx
