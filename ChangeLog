@@ -1,3 +1,7 @@
+2004-11-25  Tomoyuki Fujimori <moyu@himote.org>
+
+	* Some auxiliary files are removed.
+
 2004-09-21 NAKAMURA Ken'ichi   <nakamura@sbp.fp.a.u-tokyo.ac.jp>
 
 	* Environment variable setup is deleted from SDL_Pango_Develop_VC2003.msi.
