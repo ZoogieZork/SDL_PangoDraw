@@ -9,6 +9,7 @@ libSDL_Pango_la_SOURCES = SDL_Pango.c
 
 DEFS = @DEFS@ -DBUILD_DLL
 libSDL_Pango_la_LDFLAGS = \
+	-no-undefined		\
     -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 
 DISTCLEANFILES = *~ *~c *~h *.cross.cache inc

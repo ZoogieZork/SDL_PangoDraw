@@ -90,7 +90,8 @@ CFLAGS="$CFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS"
 
 AC_CONFIG_FILES([Makefile src/Makefile SDL_Pango.pc docs/Makefile 
-	docs/Doxyfile VisualC2003/Makefile])
+	docs/Doxyfile VisualC2003/Makefile Wix/Makefile Wix/merge_module.xml
+	Wix/dev.xml Wix/testbench.xml])
 
 # Finally create all the generated files
 AC_OUTPUT

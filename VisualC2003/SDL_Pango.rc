@@ -53,8 +53,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,1,1,0
- PRODUCTVERSION 0,1,1,0
+ FILEVERSION 0,1,2,0
+ PRODUCTVERSION 0,1,2,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -71,12 +71,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "NAKAMURA Ken'ichi"
             VALUE "FileDescription", "SDL_Pango"
-            VALUE "FileVersion", "0, 1, 1, 0"
-            VALUE "InternalName", "SDL_Pang"
+            VALUE "FileVersion", "0, 1, 2, 0"
+            VALUE "InternalName", "SDL_Pango"
             VALUE "LegalCopyright", "Copyright (C) 2004 NAKAMURA Ken'ichi"
             VALUE "OriginalFilename", "SDL_Pango.dll"
             VALUE "ProductName", "SDL_Pango"
-            VALUE "ProductVersion", "0, 1, 1, 0"
+            VALUE "ProductVersion", "0, 1, 2, 0"
         END
     END
     BLOCK "VarFileInfo"
