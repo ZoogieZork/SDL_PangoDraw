@@ -9,20 +9,25 @@
 <p>
 <h2><a class="anchor" name="intro">
 Introduction</a></h2>
-Pango is the text rendering engine of GNOME 2.x. SDL_Pango connects the engine to SDL. In Windows, pre-built binary distribution (MSI package) contains Pango and many other binaries.<h3><a class="anchor" name="dist">
+Pango is the text rendering engine of GNOME 2.x. SDL_Pango connects the engine to SDL. In Windows, pre-built binary package (MSI and merge module) is provided.<h3><a class="anchor" name="dist">
 Distribution</a></h3>
-If you are a game software developer, you will know the difficulties of distribution. So I will start to introduce SDL_Pango from the viewpoint of distribution.<p>
-In Un*x, SDL_Pango is hard to use as system-independent module, because it depends on fontconfig and Pango which are designed as system-singleton modules. If you use SDL_Pango, your software will require those modules installed to target system. If your software is shipped as shrink-wrap package, it may cause much problem on your support desk. You should carefully design a installation process.<p>
-In Windows, SDL_Pango is distributed as "merge module" which contains fontconfig and Pango. You must use Windows Installer and merge the module on your package. The merge module not only contains files, but also includes setup script which must be run on target machine. Windows Installer automatically run the script.<h3><a class="anchor" name="api">
+If you are a game software developer, you should know the difficulties of distribution. So I will start to introduce SDL_Pango from the viewpoint of distribution.<p>
+In Un*x, SDL_Pango is hard to use as system-independent module, because it depends on fontconfig and Pango which are designed as system-singleton modules. If you use SDL_Pango, your software will require those modules installed to target system. If your software is shipped as shrink-wrap package, it may cause much problem on your support desk. You should carefully design your installation process.<p>
+In Windows, SDL_Pango is distributed as "merge module" which contains fontconfig and Pango. Those binaries are modified as side-by-side components. You should use Windows Installer and merge the module on your MSI package. The merge module not only contains files, but also includes custom action which must be run at installation.<h3><a class="anchor" name="api">
 High-level API</a></h3>
-From the viewpoint of text rendering, the heart of SDL_Pango is high-level API. Other text rendering APIs, like DrawText() of Windows, font and text must be specified separately. In SDL_Pango, font specification is embedded in text:<p>
-<div class="fragment"><pre>    &lt;span font=<span class="stringliteral">"Times"</span>&gt;&lt;i&gt;This is Times and italic.&lt;/i&gt;&lt;/span&gt;
+From the viewpoint of text rendering, the heart of SDL_Pango is high-level API. Other text rendering APIs, like DrawText() of Windows, font and text must be specified separately. In SDL_Pango, font specification is embedded in text like HTML:<p>
+<div class="fragment"><pre>    &lt;span font_family=<span class="stringliteral">"Courier New"</span>&gt;&lt;i&gt;This is Courier New and italic.&lt;/i&gt;&lt;/span&gt;
 </pre></div><p>
 Color, size, subscript/superscript, obliquing, weight, and other many features are also available in same way.<h3><a class="anchor" name="i18n">
 Internationalized Text</a></h3>
-Internationalized text is another key feature. Text is specified by UTF-8. RTL script (Arabic and Hebrew) and complicated rendering (Arabic and Indic) are supported. You can see for yourself with GNOME 2.x.<h2><a class="anchor" name="get">
+Internationalized text is another key feature. Text is specified by UTF-8. RTL script (Arabic and Hebrew) and complicated rendering (Arabic, Indic and Thai) are supported. You can see it with GNOME 2.x.<h2><a class="anchor" name="get">
 Getting Started</a></h2>
-In Windows, I strongly recommend you to install MSI package. It contains Pango and fontconfig binaries. It is nearly impossible to build them.<p>
+<h3><a class="anchor" name="getlatest">
+Get latest files</a></h3>
+Get latest files from <a href="http://sourceforge.net/projects/sdlpango/">http://sourceforge.net/projects/sdlpango/</a> .<h3><a class="anchor" name="install">
+Install Header and Library</a></h3>
+In Windows and VS2003, I strongly recommend you to install MSI package. It contains Pango and fontconfig binaries which are modified as side-by-side components. It is nearly impossible to build them. (I spent much time to build them...) The MSI package also sets up environment variables. You can use SDL_Pango without any configuration. But you must set up SDL header and library by yourself.<p>
+In MinGW, I recommend you to use VS2003. Otherwise you may run into the maze of distribution. If you insist MinGW, you should use MinGW binary archive.<p>
 In Un*x, installation consists of:<p>
 <div class="fragment"><pre>    ./configure
     make
@@ -32,7 +37,7 @@ Includes</a></h3>
 To use SDL_Pango functions in a C/C++ source code file, you must use the <a class="el" href="_s_d_l___pango_8h.html">SDL_Pango.h</a> include file:<p>
 <div class="fragment"><pre><span class="preprocessor">    #include "<a class="code" href="_s_d_l___pango_8h.html">SDL_Pango.h</a>"</span>
 </pre></div><p>
-In Windows, <a class="el" href="_s_d_l___pango_8h.html">SDL_Pango.h</a> is installed on <code>%ProgramFiles%\SDL_Pango_devel\include</code> (usually <code>C:\Program</code> <code>Files\SDL_Pango_devel\include</code>). You should add this directory to include path.<h3><a class="anchor" name="comp">
+In Windows, <a class="el" href="_s_d_l___pango_8h.html">SDL_Pango.h</a> is installed on <code>%ProgramFiles%\SDL_Pango</code> <code>Development\include</code> (usually <code>C:\Program</code> <code>Files\SDL_Pango</code> <code>Development\include</code>). You should add this directory to include path.<h3><a class="anchor" name="comp">
 Compiling</a></h3>
 In Un*x, to link with SDL_Pango you should use sdl-config to get the required SDL compilation options. After that, compiling with SDL_Pango is quite easy.<p>
 Note: Some systems may not have the SDL_Pango library and include file in the same place as the SDL library and includes are located, in that case you will need to add more -I and -L paths to these command lines.<p>
@@ -43,13 +48,14 @@ Simple Example for linking an object file:<p>
 <div class="fragment"><pre>    cc -o myprogram mysource.o `sdl-config --libs` -lSDL_Pango
 </pre></div><p>
 Now myprogram is ready to run.<p>
-In Windows, MSI package installs many dlls to <code>%ProgramFiles%\SDL_Pango_devel\import_lib</code>. To link with SDL_Pango you should use SDL_Pango.lib.<p>
-SDL_Pango.dll depends on many dlls and other many files. Those dlls are installed on <code>%ProgramFiles%\SDL_Pango_devel\bin</code>. MSI package adds the directory to PATH environment variable.<h2><a class="anchor" name="devel">
-Develop</a></h2>
+You can see a sample of autoconfiscation in 'test' directory.<p>
+In Windows, MSI package installs many dlls to <code>%ProgramFiles%\SDL_Pango</code> <code>Development\import_lib</code>. To link with SDL_Pango you should use SDL_Pango.lib.<p>
+SDL_Pango.dll depends on many dlls and other many files. Those dlls are installed on <code>%ProgramFiles%\SDL_Pango</code> <code>Development\bin</code>. MSI package adds the directory to PATH environment variable.<h2><a class="anchor" name="devel">
+Development</a></h2>
 <h3><a class="anchor" name="font">
 Font Handling</a></h3>
 In Un*x, font handling depends on fontconfig of your system.<p>
-In Windows, local.conf of fontconfig is placed on <code>%ProgramFiles%\SDL_Pango_devel\etc\fonts</code>. You should know about fontconfig's font cache mechanism.<h3><a class="anchor" name="example">
+In Windows, local.conf of fontconfig is placed on <code>%ProgramFiles%\SDL_Pango</code> <code>Development\etc\fonts</code>. You should know about fontconfig's font cache mechanism.<h3><a class="anchor" name="example">
 Step-by-step Example</a></h3>
 The operation of SDL_Pango is done via context.<p>
 <div class="fragment"><pre>    SDLPango_Context *context = <a class="code" href="_s_d_l___pango_8c.html#a23">SDLPango_CreateContext</a>();
@@ -85,12 +91,12 @@ Free context.<p>
 You can see actual code in <code>test/testbench</code>.cpp.<h3><a class="anchor" name="pack">
 Packaging</a></h3>
 In Un*x, do it yourself.<p>
-In Windows, font files must be installed on apprication folder (usually <code>C:\Program</code> <code>Files\</code>[Manufacturer]\[ProductName]). The property of apprication folder must be <code>TARGETDIR</code> (this is default setting of VS2003). Add SDL_Pango.msm to your MSI package.<h2><a class="anchor" name="ack">
+In Windows, font files must be installed on apprication folder (usually <code>C:\Program</code> <code>Files\</code>[Manufacturer]\[ProductName]). The property of apprication folder must be <code>TARGETDIR</code> (this is default setting of VS2003). SDL.dll also must be installed on apprication folder. Add SDL_Pango.msm to your MSI package.<h2><a class="anchor" name="ack">
 Acknowledgment</a></h2>
 SDL_Pango is developed with financial assistance of Information-technology Promotion Agency, Japan.<p>
 <ul>
 <li>NAKAMURA Ken'ichi &lt;<a href="mailto:nakamura@sbp.fp.a.u-tokyo.ac.jp">nakamura@sbp.fp.a.u-tokyo.ac.jp</a>&gt; </li></ul>
-<hr size="1"><address style="align: right;"><small>Generated on Sun Sep 5 22:00:06 2004 for SDL_Pango by
+<hr size="1"><address style="align: right;"><small>Generated on Fri Sep 17 10:56:42 2004 for SDL_Pango by
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border=0 ></a> 1.3.8 </small></address>
 </body>

@@ -37,10 +37,7 @@ C:\bin\wix-binaries-2.0.2007.0\doc\wix.xsd">
 				<File Id="pangoquerymodulesexe" Name="pangoque.exe" LongName="pango-querymodules.exe" src="bin\pango-querymodules.exe"/>
 			</Component>
 			<Component Id="SDL_PangoComponent" Guid="61457E40-E443-4178-8486-6D31DE0B844C">
-				<File Id="sdlpangodll" Name="sdl_pang.dll" LongName="SDL_Pango.dll" src="SDL_Pango.dll"/>
-			</Component>
-			<Component Id="SDLComponent" Guid="B1D6563D-FAB4-4A0B-ABC2-C4EE24FE433C">
-				<File Id="sdldll" Name="sdl.dll" LongName="SDL.dll" src="SDL.dll"/>
+				<File Id="sdlpangodll" Name="sdl_pang.dll" LongName="SDL_Pango.dll" src="..\VisualC2003\Release\SDL_Pango.dll"/>
 			</Component>
 			<Directory Id="libDir" LongName="lib" Name="lib">
 				<Directory Id="libPangoDir" LongName="pango" Name="pango">
