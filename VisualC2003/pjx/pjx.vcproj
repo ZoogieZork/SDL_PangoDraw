@@ -4,6 +4,7 @@
 	Version="7.10"
 	Name="pjx"
 	ProjectGUID="{CA259558-1E66-4834-AF45-C5AE9D9AB43D}"
+	RootNamespace="pjx"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
@@ -33,7 +34,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="fontconfig-1.lib freetype.lib glib-2.0-0.lib gmodule-2.0-0.lib gobject-2.0-0.lib gthread-2.0-0.lib pango-1.0-0.lib pangoft2-1.0-0.lib pangowin32-1.0-0.lib"
-				OutputFile="$(OutDir)/pjx.dll"
+				OutputFile="..\bin\$(ConfigurationName)\pjx.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\Prereq\lib"
 				ModuleDefinitionFile="..\..\pjx\pjx.def"
@@ -47,7 +48,8 @@
 			<Tool
 				Name="VCPostBuildEventTool"/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
+				Name="VCPreBuildEventTool"
+				CommandLine="preprocess.bat $(ConfigurationName)"/>
 			<Tool
 				Name="VCPreLinkEventTool"/>
 			<Tool
@@ -83,7 +85,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="fontconfig-1.lib freetype.lib glib-2.0-0.lib gmodule-2.0-0.lib gobject-2.0-0.lib gthread-2.0-0.lib pango-1.0-0.lib pangoft2-1.0-0.lib pangowin32-1.0-0.lib"
-				OutputFile="$(OutDir)/pjx.dll"
+				OutputFile="..\bin\$(ConfigurationName)\pjx.dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\Prereq\lib"
 				ModuleDefinitionFile="..\..\pjx\pjx.def"
@@ -98,7 +100,8 @@
 			<Tool
 				Name="VCPostBuildEventTool"/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
+				Name="VCPreBuildEventTool"
+				CommandLine="preprocess.bat $(ConfigurationName)"/>
 			<Tool
 				Name="VCPreLinkEventTool"/>
 			<Tool

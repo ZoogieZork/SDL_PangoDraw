@@ -33,7 +33,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="SDL.lib fontconfig-1.lib freetype.lib glib-2.0-0.lib gmodule-2.0-0.lib gobject-2.0-0.lib gthread-2.0-0.lib pango-1.0-0.lib pangoft2-1.0-0.lib pangowin32-1.0-0.lib"
-				OutputFile="$(OutDir)/SDL_Pango.dll"
+				OutputFile="..\bin\$(ConfigurationName)\SDL_Pango.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\Prereq\lib"
 				ModuleDefinitionFile="..\..\src\SDL_Pango.def"
@@ -83,7 +83,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="SDL.lib fontconfig-1.lib freetype.lib glib-2.0-0.lib gmodule-2.0-0.lib gobject-2.0-0.lib gthread-2.0-0.lib pango-1.0-0.lib pangoft2-1.0-0.lib pangowin32-1.0-0.lib"
-				OutputFile="$(OutDir)/SDL_Pango.dll"
+				OutputFile="..\bin\$(ConfigurationName)\SDL_Pango.dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\Prereq\lib"
 				ModuleDefinitionFile="..\..\src\SDL_Pango.def"

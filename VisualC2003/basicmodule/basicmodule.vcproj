@@ -47,7 +47,7 @@
 				Name="VCMIDLTool"/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="install.bat $(TargetPath)"/>
+				CommandLine="postprocess.bat $(TargetPath)"/>
 			<Tool
 				Name="VCPreBuildEventTool"/>
 			<Tool
@@ -99,7 +99,7 @@
 				Name="VCMIDLTool"/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="install.bat $(TargetPath)"/>
+				CommandLine="postprocess.bat $(TargetPath)"/>
 			<Tool
 				Name="VCPreBuildEventTool"/>
 			<Tool
