@@ -1,0 +1,4 @@
+<b>Japanese</b>	(日本語)	こんにちは, <s>ｺﾝﾆﾁﾊ</s>
+<big>Chinese</big>	(中文,普通话,汉语)	你好
+<span background="red">Cantonese</span>	(粵語,廣東話)	早晨, 你好
+<span foreground="blue">Korean</span>	(한글)	안녕하세요, 안녕하십니까
