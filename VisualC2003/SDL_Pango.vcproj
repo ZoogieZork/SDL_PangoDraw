@@ -74,7 +74,7 @@ copy Debug\SDL_Pango.dll testbench\Debug
 				Name="VCCLCompilerTool"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;SDL_Pango_EXPORTS"
 				RuntimeLibrary="0"
-				UsePrecompiledHeader="3"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"/>
@@ -82,8 +82,10 @@ copy Debug\SDL_Pango.dll testbench\Debug
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="SDL.lib pango-1.0-0.lib pangoft2-1.0-0.lib glib-2.0-0.lib gobject-2.0-0.lib"
 				OutputFile="$(OutDir)/SDL_Pango.dll"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories=""
 				ModuleDefinitionFile="SDL_Pango.def"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
