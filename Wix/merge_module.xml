@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Taba (Kagura Security Service) -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi" xmlns:dx="http://tempuri.org/2003/01/dx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/wix/2003/01/wi
 C:\bin\wix-binaries-2.0.2007.0\doc\wix.xsd">
-	<Module Guid="4EB80297-FF73-4DD1-A9A7-70CAAAC5E895" Id="SDL_Pango" Language="1033" Version="0.1.1.20040910">
-		<Package Id="CAFC8D5C-59AF-48D0-9BCD-EACA122DFA3F" Description="SDL module for text rendering" Comments="This is alpha test module yet." Manufacturer="NAKAMURA Ken'ichi" InstallerVersion="200" Compressed="yes"/>
+	<Module Guid="4EB80297-FF73-4DD1-A9A7-70CAAAC5E897" Id="SDL_Pango" Language="1033" Version="0.1.1.0910">
+		<Package Id="CAFC8D5C-59AF-48D0-9BCD-EACA122DFA5F" Description="SDL module for text rendering" Comments="This is alpha test module yet." Manufacturer="NAKAMURA Ken'ichi" InstallerVersion="200" Compressed="yes"/>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Component Id="Glib2Component" Guid="46B19B88-77C4-4EF3-9629-8C136337B0D5">
 				<File Id="libglib2dll" Name="libglib2.dll" LongName="libglib-2.0-0.dll" src="bin\libglib-2.0-0.dll"/>
@@ -29,8 +28,6 @@ C:\bin\wix-binaries-2.0.2007.0\doc\wix.xsd">
 			</Component>
 			<Component Id="fontconfigComponent" Guid="C4CC51DF-138E-4DFA-A2D5-BFA5017CDF0B">
 				<File Id="libfontconfigdll" Name="libfontc.dll" LongName="libfontconfig-1.dll" src="bin\libfontconfig-1.dll"/>
-				<File Id="fontsconf" Name="fonts.con" LongName="fonts.conf" src="etc\fonts\fonts.conf"/>
-				<File Id="local.conf" Name="local.con" LongName="local.conf" src="etc\fonts\local.conf"/>
 				<File Id="fclist" Name="fc-list.exe" LongName="fc-list.exe" src="bin\fc-list.exe"/>
 			</Component>
 			<Component Id="PangoMainComponent" Guid="6523B656-1A89-4D30-AD65-F1AC73267F24">
@@ -39,21 +36,47 @@ C:\bin\wix-binaries-2.0.2007.0\doc\wix.xsd">
 				<File Id="libpangowin32dll" Name="libpawin.dll" LongName="libpangowin32-1.0-0.dll" src="bin\libpangowin32-1.0-0.dll"/>
 				<File Id="pangoquerymodulesexe" Name="pangoque.exe" LongName="pango-querymodules.exe" src="bin\pango-querymodules.exe"/>
 			</Component>
-			<Directory Id="PangoDir" LongName="pango" Name="pango">
-				<Directory Id="PangoVersionDir" LongName="1.4.0" Name="1.4.0">
-					<Directory Id="PangoModulesDir" LongName="modules" Name="modules">
-						<Component Id="PangoModulesComponent" Guid="5A2B4E29-903A-4714-9199-BF64F15F4C55">
-							<File Id="pangoarabicdll" Name="pango-ar.dll" LongName="pango-arabic-fc.dll" src="lib\pango\1.4.0\modules\pango-arabic-fc.dll"/>
-							<File Id="pangobasicfcdll" Name="pango-ba.dll" LongName="pango-basic-fc.dll" src="lib\pango\1.4.0\modules\pango-basic-fc.dll"/>
-							<File Id="pangobasicwin32dll" Name="pango-b3.dll" LongName="pango-basic-win32.dll" src="lib\pango\1.4.0\modules\pango-basic-win32.dll"/>
-							<File Id="pangohangulfcdll" Name="pango-ha.dll" LongName="pango-hangul-fc.dll" src="lib\pango\1.4.0\modules\pango-hangul-fc.dll"/>
-							<File Id="pangohebrewcfcdll" Name="pango-he.dll" LongName="pango-hebrew-fc.dll" src="lib\pango\1.4.0\modules\pango-hebrew-fc.dll"/>
-							<File Id="pangoindicfcdll" Name="pango-in.dll" LongName="pango-indic-fc.dll" src="lib\pango\1.4.0\modules\pango-indic-fc.dll"/>
-							<File Id="pangothaifcdll" Name="pango-th.dll" LongName="pango-thai-fc.dll" src="lib\pango\1.4.0\modules\pango-thai-fc.dll"/>
-						</Component>
+			<Component Id="SDL_PangoComponent" Guid="61457E40-E443-4178-8486-6D31DE0B844C">
+				<File Id="sdlpangodll" Name="sdl_pang.dll" LongName="SDL_Pango.dll" src="SDL_Pango.dll"/>
+			</Component>
+			<Component Id="SDLComponent" Guid="B1D6563D-FAB4-4A0B-ABC2-C4EE24FE433C">
+				<File Id="sdldll" Name="sdl.dll" LongName="SDL.dll" src="SDL.dll"/>
+			</Component>
+			<Directory Id="libDir" LongName="lib" Name="lib">
+				<Directory Id="libPangoDir" LongName="pango" Name="pango">
+					<Directory Id="PangoVersionDir" LongName="1.4.0" Name="1.4">
+						<Directory Id="PangoModulesDir" LongName="modules" Name="modules">
+							<Component Id="PangoModulesComponent" Guid="5A2B4E29-903A-4714-9199-BF64F15F4C55">
+								<File Id="pangoarabicdll" Name="pango-ar.dll" LongName="pango-arabic-fc.dll" src="lib\pango\1.4.0\modules\pango-arabic-fc.dll"/>
+								<File Id="pangobasicfcdll" Name="pango-ba.dll" LongName="pango-basic-fc.dll" src="lib\pango\1.4.0\modules\pango-basic-fc.dll"/>
+								<File Id="pangobasicwin32dll" Name="pango-b3.dll" LongName="pango-basic-win32.dll" src="lib\pango\1.4.0\modules\pango-basic-win32.dll"/>
+								<File Id="pangohangulfcdll" Name="pango-ha.dll" LongName="pango-hangul-fc.dll" src="lib\pango\1.4.0\modules\pango-hangul-fc.dll"/>
+								<File Id="pangohebrewcfcdll" Name="pango-he.dll" LongName="pango-hebrew-fc.dll" src="lib\pango\1.4.0\modules\pango-hebrew-fc.dll"/>
+								<File Id="pangoindicfcdll" Name="pango-in.dll" LongName="pango-indic-fc.dll" src="lib\pango\1.4.0\modules\pango-indic-fc.dll"/>
+								<File Id="pangothaifcdll" Name="pango-th.dll" LongName="pango-thai-fc.dll" src="lib\pango\1.4.0\modules\pango-thai-fc.dll"/>
+							</Component>
+						</Directory>
 					</Directory>
 				</Directory>
 			</Directory>
+			<Directory Id="etcDir" LongName="etc" Name="etc">
+				<Directory Id="etcPangoDir" LongName="pango" Name="pango">
+					<Component Id="pangoModuleListComponent" Guid="D22FEEAE-1FD0-4EEB-AE09-57D412CD2D5C">
+						<File Id="pangoModuleList" Name="pango.mod" LongName="pango.modules" src="etc\pango\pango.modules"/>
+					</Component>
+				</Directory>
+				<Directory Id="etcFontsDir" LongName="fonts" Name="fonts">
+					<Component Id="fontconfigConfComponent" Guid="86D1A86C-C58E-4A59-8D71-F6C56C0ADA6C">
+						<File Id="fontsconf" Name="fonts.con" LongName="fonts.conf" src="etc\fonts\fonts.conf"/>
+						<File Id="localconf" Name="local.con" LongName="local.conf" src="etc\fonts\local.conf"/>
+						<RemoveFile Id="fontconfigCache" On="uninstall" LongName=".fonts.cache-1" Name="fonts.cac"/>
+					</Component>
+				</Directory>
+			</Directory>
 		</Directory>
+		<InstallExecuteSequence>
+			<Custom Action="MakeFontCache" After="InstallFiles">Not Installed</Custom>
+		</InstallExecuteSequence>
+		<CustomAction Id="MakeFontCache" FileKey="fclist" ExeCommand=" " Execute="deferred" Return="check"/>
 	</Module>
 </Wix>

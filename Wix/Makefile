@@ -12,6 +12,9 @@ SHAVE = shave.xslt
 %.msm : %.wixobj
 	$(LIGHT) -b $(LIGHT_PATH) $<
 
+SDL_Pango.msm : merge_module.msm
+	mv merge_module.msm SDL_Pango.msm
+
 merge_module.msm : merge_module.wixobj
 
 merge_module.wixobj : merge_module.wxs
