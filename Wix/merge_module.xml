@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi" xmlns:dx="http://tempuri.org/2003/01/dx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/wix/2003/01/wi
 C:\bin\wix-binaries-2.0.2007.0\doc\wix.xsd">
 	<Module Guid="4EB80297-FF73-4DD1-A9A7-70CAAAC5E897" Id="SDL_Pango" Language="1033" Version="0.1.1.0910">
-		<Package Id="CAFC8D5C-59AF-48D0-9BCD-EACA122DFA5F" Description="SDL module for text rendering" Comments="This is alpha test module yet." Manufacturer="NAKAMURA Ken'ichi" InstallerVersion="200" Compressed="yes"/>
+		<Package Id="CAFC8D5C-59AF-48D0-9BCD-EACA122DFA5F" Description="SDL module for text rendering" Comments="SDL module for text rendering" Manufacturer="NAKAMURA Ken'ichi" InstallerVersion="200" Compressed="yes"/>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Component Id="Glib2Component" Guid="46B19B88-77C4-4EF3-9629-8C136337B0D5">
 				<File Id="libglib2dll" Name="libglib2.dll" LongName="libglib-2.0-0.dll" src="bin\libglib-2.0-0.dll"/>
