@@ -8,7 +8,7 @@ C:\bin\wix-binaries\doc\wix.xsd">
 			<Component Id="testbenchComponent" Guid="4C0EACD9-D08B-4559-A920-E057E5E5BE39">
 				<File Id="testbenchexe" Name="testbenc.exe" LongName="testbench.exe" DiskId="1" src="..\VisualC2003\testbench\Release\testbench.exe" Vital="yes" KeyPath="yes"/>
 				<File Id="markuptxt" Name="markup.txt" LongName="markup.txt" src="..\test\markup.txt" DiskId="1"/>
-				<Shortcut Id="testbenchshortcut" Directory="ProgramMenuFolder" Name="testbenc" Target="testbenchFeature" LongName="SDL_Pango testbench" Arguments="markup.txt" Show="normal" WorkingDirectory="TARGETDIR" Icon="stubico"/>
+				<Shortcut Id="testbenchshortcut" Directory="ProgramMenuFolder" Name="testbenc" Target="testbenchFeature" LongName="SDL_Pango testbench" Arguments="markup.txt" Show="normal" WorkingDirectory="TARGETDIR" Icon="stub.ico" IconIndex="0"/>
 			</Component>
 			<Component Id="SDLComponent" Guid="B1D6563D-FAB4-4A0B-ABC2-C4EE24FE433C">
 				<File Id="sdldll" Name="sdl.dll" LongName="SDL.dll" src="SDL.dll" DiskId="1"/>
@@ -24,6 +24,6 @@ C:\bin\wix-binaries\doc\wix.xsd">
 			<MergeRef Id="VC2003Module"/>
 		</Feature>
 		<FragmentRef Id="UIFragment"/>
-		<Icon Id="stubico" src="bitmap\stub.ico"/>
+		<Icon Id="stub.ico" src="bitmap\stub.ico"/>
 	</Product>
 </Wix>

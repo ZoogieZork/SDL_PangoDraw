@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi" xmlns:dx="http://tempuri.org/2003/01/dx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://schemas.microsoft.com/wix/2003/01/wi C:\bin\wix-binaries\doc\wix.xsd">
+<Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi" xmlns:dx="http://tempuri.org/2003/01/dx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/wix/2003/01/wi C:\bin\wix-binaries\doc\wix.xsd">
 	<Fragment Id="UIFragment">
 		<Property Id="AcceptLicense">No</Property>
 		<Property Id="ErrorDialog">ErrorDlg</Property>
+		<Property Id="MaintenanceDialog_Action">Repair</Property>
 		<!--BUTTON TEXTS-->
 		<Property Id="Button_Back">&lt; &amp;Back</Property>
 		<Property Id="Button_Next">&amp;Next &gt;</Property>
@@ -53,6 +53,30 @@ xsi:schemaLocation="http://schemas.microsoft.com/wix/2003/01/wi C:\bin\wix-binar
 					<Text>[BigFont]Welcome to the [ProductName] installation</Text>
 				</Control>
 			</Dialog>
+			<Dialog Id="MaintenanceDialog" Width="370" Height="270" Title="[ProductName] [Setup]">
+				<Control Id="Finish" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Cancel="yes" Text="[Button_Finish]">
+					<Publish Property="REINSTALL" Value="ALL">MaintenanceDialog_Action="Repair"</Publish>
+					<Publish Event="Reinstall" Value="ALL">MaintenanceDialog_Action="Repair"</Publish>
+					<Publish Property="REMOVE" Value="ALL">MaintenanceDialog_Action="Remove"</Publish>
+					<Publish Event="Remove" Value="ALL">MaintenanceDialog_Action="Remove"</Publish>
+					<Publish Event="EndDialog" Value="Return">1</Publish>
+				</Control>
+				<Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="[Button_Cancel]">
+					<Publish Event="SpawnDialog" Value="CancelDialog">1</Publish>
+				</Control>
+				<Control Id="RepairRadioGroup" Type="RadioButtonGroup" X="18" Y="108" Width="348" Height="48" Property="MaintenanceDialog_Action">
+					<Text>MsiRadioButtonGroup</Text>
+				</Control>
+				<Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Disabled="yes" Text="[Button_Back]"/>
+				<Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="374" Height="44" FixedSize="yes" TabSkip="no" Text="banner.bmp"/>
+				<Control Id="BodyText" Type="Text" X="9" Y="63" Width="354" Height="42">
+					<Text>Please select repair or remove</Text>
+				</Control>
+			</Dialog>
+			<RadioGroup Property="MaintenanceDialog_Action">
+				<RadioButton Text="[ProductName] Repair(&amp;R)" X="0" Y="0" Width="348" Height="17">Repair</RadioButton>
+				<RadioButton Text="[ProductName] Remove(&amp;M)" X="0" Y="18" Width="348" Height="17">Remove</RadioButton>
+			</RadioGroup>
 			<Dialog Id="ErrorDlg" Y="10" Width="270" Height="105" Title="Installer Information" ErrorDialog="yes" NoMinimize="yes">
 				<Control Id="ErrorText" Type="Text" X="48" Y="15" Width="205" Height="60" TabSkip="no" Text="Information text"/>
 				<Control Id="Y" Type="PushButton" X="100" Y="80" Width="56" Height="17" TabSkip="yes" Text="[Button_Yes]">
@@ -358,7 +382,8 @@ xsi:schemaLocation="http://schemas.microsoft.com/wix/2003/01/wi C:\bin\wix-binar
 			<!-- END DIALOG DEFINITION -->
 			<InstallUISequence>
 				<Custom Action="SET_TARGETDIR" Before="CostInitialize">TARGETDIR=""</Custom>
-				<Show Dialog="WelcomeDialog" After="MigrateFeatureStates"/>
+				<Show Dialog="MaintenanceDialog" After="CostFinalize">Installed</Show>
+				<Show Dialog="WelcomeDialog" After="MigrateFeatureStates">Not Installed</Show>
 				<Show Dialog="ProgressDialog" After="WelcomeDialog"/>
 				<Show Dialog="UserExit" OnExit="cancel"/>
 				<Show Dialog="ExitDialog" OnExit="success"/>
@@ -366,7 +391,8 @@ xsi:schemaLocation="http://schemas.microsoft.com/wix/2003/01/wi C:\bin\wix-binar
 			</InstallUISequence>
 			<AdminUISequence>
 				<Custom Action="SET_TARGETDIR" Before="CostInitialize">TARGETDIR=""</Custom>
-				<Show Dialog="WelcomeDialog" After="CostFinalize"/>
+				<Show Dialog="MaintenanceDialog" After="CostFinalize">Installed</Show>
+				<Show Dialog="WelcomeDialog" After="MaintenanceDialog">Not Installed</Show>
 				<Show Dialog="ProgressDialog" After="WelcomeDialog"/>
 				<Show Dialog="UserExit" OnExit="cancel"/>
 				<Show Dialog="ExitDialog" OnExit="success"/>
