@@ -65,6 +65,12 @@
 
     \section get Getting Started
 
+    \subsection getlatest Get latest files
+
+    Get latest files from http://sourceforge.net/projects/sdlpango/ .
+
+    \subsection install Install
+
     In Windows, I strongly recommend you to install MSI package. It contains Pango 
     and fontconfig binaries. It is nearly impossible to build them.
 
@@ -209,7 +215,7 @@
 
     @author NAKAMURA Ken'ichi
     @date   2004/08/26
-    $Revision: 1.1 $
+    $Revision: 1.2 $
 */
 
 #include <pango/pango.h>
