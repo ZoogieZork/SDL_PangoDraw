@@ -1,4 +1,8 @@
+SDL_PangoDraw
+=============
+
 This is a fork of SDL_Pango, a library to render text in SDL using the Pango layout engine.
+The name has been changed to avoid confusion.
 
 This fork is based on the original 0.1.3 branch in CVS.  The names of tags have been changed for clarity in Git.
 
