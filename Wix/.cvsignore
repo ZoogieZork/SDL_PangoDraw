@@ -1,7 +1,0 @@
-*.msi
-*.msm
-*.wixobj
-merge_module.xml
-Makefile
-dev.xml
-testbench.xml

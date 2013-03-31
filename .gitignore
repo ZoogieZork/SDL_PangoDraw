@@ -1,0 +1,75 @@
+.deps
+.dirstamp
+.libs
+*~
+*.bak
+*.la
+*.lo
+*.o
+
+# /
+/*.tar.gz
+/Makefile
+/Makefile.in
+/SDL_Pango.pc
+/aclocal.m4
+/autom4te.cache
+/config.guess
+/config.log
+/config.status
+/config.sub
+/configure
+/depcomp
+/install-sh
+/libtool
+/ltmain.sh
+/missing
+/mkinstalldirs
+
+# /Wix/
+/Wix/*.msi
+/Wix/*.msm
+/Wix/*.wixobj
+/Wix/merge_module.xml
+/Wix/Makefile
+/Wix/dev.xml
+/Wix/testbench.xml
+
+# /VisualC2003/
+/VisualC2003/*.aps
+/VisualC2003/Debug
+/VisualC2003/Release
+/VisualC2003/Makefile
+/VisualC2003/Makefile.in
+
+# /VisualC2003/testbench/
+/VisualC2003/testbench/*.aps
+/VisualC2003/testbench/Debug
+/VisualC2003/testbench/Release
+
+# /VisualC2003/testbench/Setup/
+/VisualC2003/testbench/Setup/Debug
+/VisualC2003/testbench/Setup/Release
+
+# /docs/
+/docs/Doxyfile
+/docs/Makefile
+/docs/Makefile.in
+
+# /src/
+/src/Makefile
+/src/Makefile.in
+
+# /test/
+/test/Makefile.in
+/test/aclocal.m4
+/test/autom4te.cache
+/test/config.guess
+/test/config.sub
+/test/configure
+/test/depcomp
+/test/install-sh
+/test/ltmain.sh
+/test/missing
+/test/mkinstalldirs
+
