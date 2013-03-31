@@ -1,3 +1,6 @@
+
+AUTOMAKE_OPTIONS = foreign
+
 SUBDIRS = src
 DIST_SUBDIRS = src docs VisualC2003
 
