@@ -1,12 +1,12 @@
 AC_PREREQ(2.59)
 
-# Making releases:
-#   MICRO_VERSION += 1;
-#   INTERFACE_AGE += 1;
-#   BINARY_AGE += 1;
-# if any functions have been added, set INTERFACE_AGE to 0.
-# if backwards compatibility has been broken,
-# set BINARY_AGE and INTERFACE_AGE to 0.
+dnl Making releases:
+dnl   app_patch_ver += 1;
+dnl   app_interface_age += 1;
+dnl   app_binary_age += 1;
+dnl if any functions have been added, set interface age to 0.
+dnl if backwards compatibility has been broken,
+dnl set binary age and interface age to 0.
 
 m4_define([app_major_ver], [1])
 m4_define([app_minor_ver], [0])
