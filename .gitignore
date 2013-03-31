@@ -8,10 +8,10 @@
 *.o
 
 # /
-/*.tar.gz
 /Makefile
 /Makefile.in
 /SDL_PangoDraw.pc
+/SDL_PangoDraw-*
 /aclocal.m4
 /autom4te.cache
 /config.guess
