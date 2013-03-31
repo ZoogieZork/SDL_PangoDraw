@@ -81,11 +81,7 @@ LIBS="$LIBS $PANGOFT2_LIBS"
 
 # Check for SDL
 
-SDL_VERSION=1.2.4
-AM_PATH_SDL($SDL_VERSION,
-            :,
-	    AC_MSG_ERROR([*** SDL version $SDL_VERSION not found!])
-)
+PKG_CHECK_MODULES(SDL, [sdl >= 1.2.4])
 CFLAGS="$CFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS"
 
