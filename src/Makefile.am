@@ -1,14 +1,13 @@
-#Makefile.am for SDL_Pango library/DLL
 
-lib_LTLIBRARIES = libSDL_Pango.la
+lib_LTLIBRARIES = libSDL_PangoDraw.la
 
-libSDL_Pangoincludedir = $(includedir)
-libSDL_Pangoinclude_HEADERS = SDL_Pango.h
+libSDL_PangoDrawincludedir = $(includedir)
+libSDL_PangoDrawinclude_HEADERS = SDL_PangoDraw.h
 
-libSDL_Pango_la_SOURCES = SDL_Pango.c
+libSDL_PangoDraw_la_SOURCES = SDL_PangoDraw.c
 
 DEFS = @DEFS@ -DBUILD_DLL
-libSDL_Pango_la_LDFLAGS = \
+libSDL_PangoDraw_la_LDFLAGS = \
 	-no-undefined		\
     -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 

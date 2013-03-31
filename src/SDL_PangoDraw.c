@@ -1,5 +1,6 @@
-/*  SDL_Pango.c -- A companion library to SDL for working with Pango.
+/*  SDL_PangoDraw.c -- A companion library to SDL for working with Pango.
     Copyright (C) 2004 NAKAMURA Ken'ichi
+    Copyright (C) 2013 Michael Imamura
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -21,24 +22,24 @@
 
     \section intro Introduction
 
-    Pango is the text rendering engine of GNOME 2.x. SDL_Pango connects the 
+    Pango is the text rendering engine of GNOME 2.x. SDL_PangoDraw connects the 
     engine to SDL. In Windows, pre-built binary package (MSI and merge module) 
     is provided.
 
     \subsection dist Distribution
 
     If you are a game software developer, you should know the difficulties of 
-    distribution. So I will start to introduce SDL_Pango from the viewpoint 
+    distribution. So I will start to introduce SDL_PangoDraw from the viewpoint 
     of distribution.
 
-    In Un*x, SDL_Pango is hard to use as system-independent module, because 
+    In Un*x, SDL_PangoDraw is hard to use as system-independent module, because 
     it depends on fontconfig and Pango which are designed as system-singleton 
-    modules. If you use SDL_Pango, your software will require those modules 
+    modules. If you use SDL_PangoDraw, your software will require those modules 
     installed to target system. If your software is shipped as shrink-wrap 
     package, it may cause much problem on your support desk. You should 
     carefully design your installation process.
 
-    In Windows, SDL_Pango is distributed as "merge module" which contains 
+    In Windows, SDL_PangoDraw is distributed as "merge module" which contains 
     fontconfig and Pango. Those binaries are modified as side-by-side components.
     You should use Windows Installer and merge the module 
     on your MSI package. The merge module not only contains files, but also includes 
@@ -46,9 +47,9 @@
 
     \subsection api High-level API
 
-    From the viewpoint of text rendering, the heart of SDL_Pango is high-level API. 
+    From the viewpoint of text rendering, the heart of SDL_PangoDraw is high-level API. 
     Other text rendering APIs, like DrawText() of Windows, font and text must be 
-    specified separately. In SDL_Pango, font specification is embedded in text like 
+    specified separately. In SDL_PangoDraw, font specification is embedded in text like 
     HTML:
 
     \code
@@ -89,23 +90,23 @@
 
     \subsection inc Includes
 
-    To use SDL_Pango functions in a C/C++ source code file, you must use the SDL_Pango.h 
+    To use SDL_PangoDraw functions in a C/C++ source code file, you must use the SDL_PangoDraw.h 
     include file:
 
     \code
-    #include "SDL_Pango.h"
+    #include "SDL_PangoDraw.h"
     \endcode
 
-    In Windows, SDL_Pango.h is installed on \c \%ProgramFiles\%\\SDL_Pango \c Development\\include 
-    (usually \c C:\\Program \c Files\\SDL_Pango \c Development\\include). You should add this 
+    In Windows, SDL_PangoDraw.h is installed on \c \%ProgramFiles\%\\SDL_PangoDraw \c Development\\include 
+    (usually \c C:\\Program \c Files\\SDL_PangoDraw \c Development\\include). You should add this 
     directory to include path.
 
     \subsection comp Compiling
 
-    In Un*x, to link with SDL_Pango you should use sdl-config to get the required SDL 
-    compilation options. After that, compiling with SDL_Pango is quite easy.
+    In Un*x, to link with SDL_PangoDraw you should use sdl-config to get the required SDL 
+    compilation options. After that, compiling with SDL_PangoDraw is quite easy.
 
-    Note: Some systems may not have the SDL_Pango library and include file in the same 
+    Note: Some systems may not have the SDL_PangoDraw library and include file in the same 
     place as the SDL library and includes are located, in that case you will need to 
     add more -I and -L paths to these command lines.
 
@@ -118,18 +119,18 @@
     Simple Example for linking an object file:
 
     \code
-    cc -o myprogram mysource.o `sdl-config --libs` -lSDL_Pango
+    cc -o myprogram mysource.o `sdl-config --libs` -lSDL_PangoDraw
     \endcode
 
     Now myprogram is ready to run. 
     
     You can see a sample of autoconfiscation in 'test' directory.
 
-    In Windows, MSI package installs many dlls to \c \%ProgramFiles\%\\SDL_Pango \c Development\\import_lib. 
-    To link with SDL_Pango you should use SDL_Pango.lib.
+    In Windows, MSI package installs many dlls to \c \%ProgramFiles\%\\SDL_PangoDraw \c Development\\import_lib. 
+    To link with SDL_PangoDraw you should use SDL_PangoDraw.lib.
 
-    SDL_Pango.dll depends on many dlls and other many files. Those dlls are installed on 
-    \c \%ProgramFiles\%\\SDL_Pango \c Development\\bin. MSI package adds the directory to PATH environment 
+    SDL_PangoDraw.dll depends on many dlls and other many files. Those dlls are installed on 
+    \c \%ProgramFiles\%\\SDL_PangoDraw \c Development\\bin. MSI package adds the directory to PATH environment 
     variable.
 
     \section devel Development
@@ -138,35 +139,35 @@
 
     In Un*x, font handling depends on fontconfig of your system.
 
-    In Windows, local.conf of fontconfig is placed on \c \%ProgramFiles\%\\SDL_Pango \c Development\\etc\\fonts. 
+    In Windows, local.conf of fontconfig is placed on \c \%ProgramFiles\%\\SDL_PangoDraw \c Development\\etc\\fonts. 
     You should know about fontconfig's font cache mechanism.
 
     \subsection example Step-by-step Example
 
-    The operation of SDL_Pango is done via context.
+    The operation of SDL_PangoDraw is done via context.
 
     \code
-    SDLPango_Context *context = SDLPango_CreateContext();
+    SDLPangoDraw_Context *context = SDLPangoDraw_CreateContext();
     \endcode
 
     Specify default colors and minimum surface size.
 
     \code
-    SDLPango_SetDefaultColor(context, MATRIX_TRANSPARENT_BACK_WHITE_LETTER);
-    SDLPango_SetMinimumSize(context, 640, 0);
+    SDLPangoDraw_SetDefaultColor(context, MATRIX_TRANSPARENT_BACK_WHITE_LETTER);
+    SDLPangoDraw_SetMinimumSize(context, 640, 0);
     \endcode
 
     Set markup text.
 
     \code
-    SDLPango_SetMarkup(context, "This is <i>markup</i> text.", -1);
+    SDLPangoDraw_SetMarkup(context, "This is <i>markup</i> text.", -1);
     \endcode
 
     Now you can get the size of surface.
 
     \code
-    int w = SDLPango_GetLayoutWidth(context);
-    int h = SDLPango_GetLayoutHeight(context);
+    int w = SDLPangoDraw_GetLayoutWidth(context);
+    int h = SDLPangoDraw_GetLayoutHeight(context);
     \endcode
 
     Create surface to draw.
@@ -183,7 +184,7 @@
     And draw on it.
 
     \code
-    SDLPango_Draw(context, surface, margin_x, margin_y);
+    SDLPangoDraw_Draw(context, surface, margin_x, margin_y);
     \endcode
 
     You must free the surface by yourself.
@@ -195,7 +196,7 @@
     Free context.
 
     \code
-    SDLPango_FreeContext(context);
+    SDLPangoDraw_FreeContext(context);
     \endcode
 
     You can see actual code in \c test/testbench.cpp.
@@ -207,19 +208,19 @@
     In Windows, font files must be installed on apprication folder (usually 
     \c C:\\Program \c Files\\[Manufacturer]\\[ProductName]). The property of 
     apprication folder must be \c TARGETDIR (this is default setting of VS2003). 
-    SDL.dll also must be installed on apprication folder. Add SDL_Pango.msm to 
+    SDL.dll also must be installed on apprication folder. Add SDL_PangoDraw.msm to 
     your MSI package.
 
     \section ack Acknowledgment
 
-    SDL_Pango is developed with financial assistance of Information-technology Promotion Agency, Japan.
+    SDL_PangoDraw is developed with financial assistance of Information-technology Promotion Agency, Japan.
 
 - NAKAMURA Ken'ichi <nakamura@sbp.fp.a.u-tokyo.ac.jp>
     
 */
 
 /*! @file
-    @brief Implementation of SDL_Pango
+    @brief Implementation of SDL_PangoDraw
 
     @author NAKAMURA Ken'ichi
     @date   2004/12/07
@@ -229,7 +230,7 @@
 #include <pango/pango.h>
 #include <pango/pangoft2.h>
 
-#include "SDL_Pango.h"
+#include "SDL_PangoDraw.h"
 
 //! non-zero if initialized
 static int IS_INITIALIZED = 0;
@@ -280,7 +281,7 @@ typedef struct _contextImpl {
     PangoLayout *layout;
     surfaceArgs surface_args;
     FT_Bitmap *tmp_ftbitmap;
-    SDLPango_Matrix color_matrix;
+    SDLPangoDraw_Matrix color_matrix;
     int min_width;
     int min_height;
 } contextImpl;
@@ -289,14 +290,14 @@ typedef struct _contextImpl {
 /*!
     Initialize the Glib and Pango API.
     This must be called before using other functions in this library,
-    excepting SDLPango_WasInit.
+    excepting SDLPangoDraw_WasInit.
     SDL does not have to be initialized before this call.
 
 
     @return always 0.
 */
 int
-SDLPango_Init()
+SDLPangoDraw_Init()
 {
     g_type_init();
 
@@ -307,14 +308,14 @@ SDLPango_Init()
 
 /*!
     Query the initilization status of the Glib and Pango API.
-    You may, of course, use this before SDLPango_Init to avoid
+    You may, of course, use this before SDLPangoDraw_Init to avoid
     initilizing twice in a row.
 
     @return zero when already initialized.
     non-zero when not initialized.
 */
 int
-SDLPango_WasInit()
+SDLPangoDraw_WasInit()
 {
     return IS_INITIALIZED;
 }
@@ -332,9 +333,9 @@ SDLPango_WasInit()
 */
 static void
 drawGlyphString(
-    SDLPango_Context *context,
+    SDLPangoDraw_Context *context,
     SDL_Surface *surface,
-    SDLPango_Matrix *color_matrix,
+    SDLPangoDraw_Matrix *color_matrix,
     PangoFont *font,
     PangoGlyphString *glyphs,
     SDL_Rect *rect,
@@ -342,7 +343,7 @@ drawGlyphString(
 {
     pango_ft2_render(context->tmp_ftbitmap, font, glyphs, rect->x, rect->y + baseline);
 
-    SDLPango_CopyFTBitmapToSurface(
+    SDLPangoDraw_CopyFTBitmapToSurface(
 	context->tmp_ftbitmap,
 	surface,
 	color_matrix,
@@ -362,7 +363,7 @@ drawGlyphString(
 */
 static void drawHLine(
     SDL_Surface *surface,
-    SDLPango_Matrix *color_matrix,
+    SDLPangoDraw_Matrix *color_matrix,
     int y,
     int start,
     int end)
@@ -423,7 +424,7 @@ static void drawHLine(
 */
 static void
 drawLine(
-    SDLPango_Context *context,
+    SDLPangoDraw_Context *context,
     SDL_Surface *surface,
     PangoLayoutLine *line,
     gint x, 
@@ -438,7 +439,7 @@ drawLine(
     int x_off = 0;
 
     while (tmp_list) {
-	SDLPango_Matrix color_matrix = context->color_matrix;
+	SDLPangoDraw_Matrix color_matrix = context->color_matrix;
 	PangoUnderline uline = PANGO_UNDERLINE_NONE;
 	gboolean strike, fg_set, bg_set, shape_set;
 	gint rise, risen_y;
@@ -658,10 +659,10 @@ getItemProperties (
     @param *rect [in] Rect to copy
 */
 void
-SDLPango_CopyFTBitmapToSurface(
+SDLPangoDraw_CopyFTBitmapToSurface(
     const FT_Bitmap *bitmap,
     SDL_Surface *surface,
-    const SDLPango_Matrix *matrix,
+    const SDLPangoDraw_Matrix *matrix,
     SDL_Rect *rect)
 {
     int i;
@@ -726,12 +727,12 @@ SDLPango_CopyFTBitmapToSurface(
 /*!
     Create a context which contains Pango objects.
 
-    @return A pointer to the context as a SDLPango_Context*.
+    @return A pointer to the context as a SDLPangoDraw_Context*.
 */
-SDLPango_Context*
-SDLPango_CreateContext()
+SDLPangoDraw_Context*
+SDLPangoDraw_CreateContext()
 {
-    SDLPango_Context *context = g_malloc(sizeof(SDLPango_Context));
+    SDLPangoDraw_Context *context = g_malloc(sizeof(SDLPangoDraw_Context));
     G_CONST_RETURN char *charset;
 
     context->font_map = pango_ft2_font_map_new ();
@@ -748,7 +749,7 @@ SDLPango_CreateContext()
 
     context->layout = pango_layout_new (context->context);
 
-    SDLPango_SetSurfaceCreateArgs(context, SDL_SWSURFACE | SDL_SRCALPHA, DEFAULT_DEPTH,
+    SDLPangoDraw_SetSurfaceCreateArgs(context, SDL_SWSURFACE | SDL_SRCALPHA, DEFAULT_DEPTH,
 	DEFAULT_RMASK, DEFAULT_GMASK, DEFAULT_BMASK, DEFAULT_AMASK);
 
     context->tmp_ftbitmap = NULL;
@@ -767,7 +768,7 @@ SDLPango_CreateContext()
     @param *context [i/o] Context to be free
 */
 void
-SDLPango_FreeContext(SDLPango_Context *context)
+SDLPangoDraw_FreeContext(SDLPangoDraw_Context *context)
 {
     freeFTBitmap(context->tmp_ftbitmap);
 
@@ -784,7 +785,7 @@ SDLPango_FreeContext(SDLPango_Context *context)
 
 /*!
     Specify Arguments when create a surface.
-    When SDL_Pango creates a surface, the arguments are used.
+    When SDL_PangoDraw creates a surface, the arguments are used.
 
     @param *context [i/o] Context
     @param flags [in] Same as SDL_CreateRGBSurface()
@@ -795,8 +796,8 @@ SDLPango_FreeContext(SDLPango_Context *context)
     @param Amask [in] Same as SDL_CreateRGBSurface()
 */
 void
-SDLPango_SetSurfaceCreateArgs(
-    SDLPango_Context *context,
+SDLPangoDraw_SetSurfaceCreateArgs(
+    SDLPangoDraw_Context *context,
     Uint32 flags,
     int depth,
     Uint32 Rmask, Uint32 Gmask, Uint32 Bmask, Uint32 Amask)
@@ -816,8 +817,8 @@ SDLPango_SetSurfaceCreateArgs(
     @param *context [in] Context
     @return A newly created surface
 */
-SDL_Surface * SDLPango_CreateSurfaceDraw(
-    SDLPango_Context *context)
+SDL_Surface * SDLPangoDraw_CreateSurfaceDraw(
+    SDLPangoDraw_Context *context)
 {
     PangoRectangle logical_rect;
     SDL_Surface *surface;
@@ -839,7 +840,7 @@ SDL_Surface * SDLPango_CreateSurfaceDraw(
 	context->surface_args.Bmask,
 	context->surface_args.Amask);
 
-    SDLPango_Draw(context, surface, 0, 0);
+    SDLPangoDraw_Draw(context, surface, 0, 0);
 
     return surface;
 }
@@ -853,8 +854,8 @@ SDL_Surface * SDLPango_CreateSurfaceDraw(
     @param y [in] Y of left-top of drawing area
 */
 void
-SDLPango_Draw(
-    SDLPango_Context *context,
+SDLPangoDraw_Draw(
+    SDLPangoDraw_Context *context,
     SDL_Surface *surface,
     int x, int y)
 {
@@ -969,8 +970,8 @@ clearFTBitmap(
     @param height [in] Height. zero/minus value means non-specified.
 */
 void
-SDLPango_SetMinimumSize(
-    SDLPango_Context *context,
+SDLPangoDraw_SetMinimumSize(
+    SDLPangoDraw_Context *context,
     int width, int height)
 {
     int pango_width;
@@ -991,9 +992,9 @@ SDLPango_SetMinimumSize(
     @param *color_matrix [in] Foreground and background color
 */
 void
-SDLPango_SetDefaultColor(
-    SDLPango_Context *context,
-    const SDLPango_Matrix *color_matrix)
+SDLPangoDraw_SetDefaultColor(
+    SDLPangoDraw_Context *context,
+    const SDLPangoDraw_Matrix *color_matrix)
 {
     context->color_matrix = *color_matrix;
 }
@@ -1005,8 +1006,8 @@ SDLPango_SetDefaultColor(
     @return Width
 */
 int
-SDLPango_GetLayoutWidth(
-    SDLPango_Context *context)
+SDLPangoDraw_GetLayoutWidth(
+    SDLPangoDraw_Context *context)
 {
     PangoRectangle logical_rect;
 
@@ -1022,8 +1023,8 @@ SDLPango_GetLayoutWidth(
     @return Height
 */
 int
-SDLPango_GetLayoutHeight(
-    SDLPango_Context *context)
+SDLPangoDraw_GetLayoutHeight(
+    SDLPangoDraw_Context *context)
 {
     PangoRectangle logical_rect;
 
@@ -1042,8 +1043,8 @@ SDLPango_GetLayoutHeight(
     @param length [in] Text length. -1 means NULL-terminated text.
 */
 void
-SDLPango_SetMarkup(
-    SDLPango_Context *context,
+SDLPangoDraw_SetMarkup(
+    SDLPangoDraw_Context *context,
     const char *markup,
     int length)
 {
@@ -1062,8 +1063,8 @@ SDLPango_SetMarkup(
     @param length [in] Text length. -1 means NULL-terminated text.
 */
 void
-SDLPango_SetText(
-    SDLPango_Context *context,
+SDLPangoDraw_SetText(
+    SDLPangoDraw_Context *context,
     const char *text,
     int length)
 {
@@ -1082,8 +1083,8 @@ SDLPango_SetText(
     @param dpi_y [in] Y dpi
 */
 void
-SDLPango_SetDpi(
-    SDLPango_Context *context,
+SDLPangoDraw_SetDpi(
+    SDLPangoDraw_Context *context,
     double dpi_x, double dpi_y)
 {
     pango_ft2_font_map_set_resolution (PANGO_FT2_FONT_MAP (context->font_map), dpi_x, dpi_y);
@@ -1095,8 +1096,8 @@ SDLPango_SetDpi(
     @param *context [i/o] Context
     @param *language_tag [in] A RFC-3066 format language tag 
 */
-void SDLCALL SDLPango_SetLanguage(
-    SDLPango_Context *context,
+void SDLCALL SDLPangoDraw_SetLanguage(
+    SDLPangoDraw_Context *context,
     const char *language_tag)
 {
     pango_context_set_language (context->context, pango_language_from_string (language_tag));
@@ -1108,26 +1109,26 @@ void SDLCALL SDLPango_SetLanguage(
     @param *context [i/o] Context
     @param direction [in] Direction
 */
-void SDLCALL SDLPango_SetBaseDirection(
-    SDLPango_Context *context,
-    SDLPango_Direction direction)
+void SDLCALL SDLPangoDraw_SetBaseDirection(
+    SDLPangoDraw_Context *context,
+    SDLPangoDraw_Direction direction)
 {
     PangoDirection pango_dir;
 
     switch(direction) {
-    case SDLPANGO_DIRECTION_LTR:
+    case SDLPANGODRAW_DIRECTION_LTR:
 	pango_dir = PANGO_DIRECTION_LTR;
 	break;
-    case SDLPANGO_DIRECTION_RTL:
+    case SDLPANGODRAW_DIRECTION_RTL:
 	pango_dir = PANGO_DIRECTION_RTL;
 	break;
-    case SDLPANGO_DIRECTION_WEAK_LTR:
+    case SDLPANGODRAW_DIRECTION_WEAK_LTR:
 	pango_dir = PANGO_DIRECTION_WEAK_LTR;
 	break;
-    case SDLPANGO_DIRECTION_WEAK_RTL:
+    case SDLPANGODRAW_DIRECTION_WEAK_RTL:
 	pango_dir = PANGO_DIRECTION_WEAK_RTL;
 	break;
-    case SDLPANGO_DIRECTION_NEUTRAL:
+    case SDLPANGODRAW_DIRECTION_NEUTRAL:
 	pango_dir = PANGO_DIRECTION_NEUTRAL;
 	break;
     default:
@@ -1144,8 +1145,8 @@ void SDLCALL SDLPango_SetBaseDirection(
     @param *context [in] Context
     @return Font map
 */
-PangoFontMap* SDLCALL SDLPango_GetPangoFontMap(
-    SDLPango_Context *context)
+PangoFontMap* SDLCALL SDLPangoDraw_GetPangoFontMap(
+    SDLPangoDraw_Context *context)
 {
     return context->font_map;
 }
@@ -1156,8 +1157,8 @@ PangoFontMap* SDLCALL SDLPango_GetPangoFontMap(
     @param *context [in] Context
     @return Font description
 */
-PangoFontDescription* SDLCALL SDLPango_GetPangoFontDescription(
-    SDLPango_Context *context)
+PangoFontDescription* SDLCALL SDLPangoDraw_GetPangoFontDescription(
+    SDLPangoDraw_Context *context)
 {
     return context->font_desc;
 }
@@ -1168,8 +1169,8 @@ PangoFontDescription* SDLCALL SDLPango_GetPangoFontDescription(
     @param *context [in] Context
     @return Layout
 */
-PangoLayout* SDLCALL SDLPango_GetPangoLayout(
-    SDLPango_Context *context)
+PangoLayout* SDLCALL SDLPangoDraw_GetPangoLayout(
+    SDLPangoDraw_Context *context)
 {
     return context->layout;
 }

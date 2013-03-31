@@ -3,9 +3,9 @@ exec_prefix=@exec_prefix@
 libdir=@libdir@
 includedir=@includedir@
 
-Name: SDL_Pango
+Name: SDL_PangoDraw
 Description: SDL library for internationalized text rendering
 Version: @VERSION@
 Requires: pango
-Libs: -L${libdir} -lSDL_Pango
+Libs: -L${libdir} -lSDL_PangoDraw
 Cflags: -I${includedir}

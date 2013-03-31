@@ -11,7 +11,7 @@
 /*.tar.gz
 /Makefile
 /Makefile.in
-/SDL_Pango.pc
+/SDL_PangoDraw.pc
 /aclocal.m4
 /autom4te.cache
 /config.guess

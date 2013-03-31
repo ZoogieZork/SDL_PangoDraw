@@ -5,7 +5,7 @@ SUBDIRS = src
 DIST_SUBDIRS = src docs VisualC2003
 
 EXTRA_DIST = \
-    SDL_Pango.pc.in sidebyside_patch \
+    SDL_PangoDraw.pc.in sidebyside_patch \
 	test/AUTHORS test/ChangeLog test/configure.in test/COPYING \
 	test/INSTALL test/Makefile.am test/markup.txt test/NEWS \
 	test/README test/testbench.c \
@@ -14,4 +14,4 @@ EXTRA_DIST = \
 	Wix/bitmap
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = SDL_Pango.pc
+pkgconfig_DATA = SDL_PangoDraw.pc

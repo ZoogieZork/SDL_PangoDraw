@@ -1,6 +1,6 @@
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT(README)
+AC_INIT([README.md])
 
 # Set various version strings - taken gratefully from the GTk sources
 
@@ -45,7 +45,7 @@ AC_CANONICAL_TARGET
 
 # Setup for automake
 
-AM_INIT_AUTOMAKE(SDL_Pango, $VERSION, )
+AM_INIT_AUTOMAKE(SDL_PangoDraw, $VERSION, )
 
 # Check for tools
 
@@ -89,7 +89,7 @@ AM_PATH_SDL($SDL_VERSION,
 CFLAGS="$CFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS"
 
-AC_CONFIG_FILES([Makefile src/Makefile SDL_Pango.pc docs/Makefile docs/Doxyfile VisualC2003/Makefile Wix/Makefile Wix/merge_module.xml Wix/dev.xml Wix/testbench.xml])
+AC_CONFIG_FILES([Makefile src/Makefile SDL_PangoDraw.pc docs/Makefile docs/Doxyfile VisualC2003/Makefile Wix/Makefile Wix/merge_module.xml Wix/dev.xml Wix/testbench.xml])
 
 # Finally create all the generated files
 AC_OUTPUT
