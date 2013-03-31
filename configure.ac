@@ -1,8 +1,4 @@
-# Process this file with autoconf to produce a configure script.
-
-AC_INIT([README.md])
-
-# Set various version strings - taken gratefully from the GTk sources
+AC_PREREQ(2.59)
 
 # Making releases:
 #   MICRO_VERSION += 1;
@@ -12,12 +8,32 @@ AC_INIT([README.md])
 # if backwards compatibility has been broken,
 # set BINARY_AGE and INTERFACE_AGE to 0.
 
-MAJOR_VERSION=1
-MINOR_VERSION=0
-MICRO_VERSION=0
-INTERFACE_AGE=0
-BINARY_AGE=0
-VERSION=$MAJOR_VERSION.$MINOR_VERSION.$MICRO_VERSION
+m4_define([app_major_ver], [1])
+m4_define([app_minor_ver], [0])
+m4_define([app_patch_ver], [0])
+m4_define([app_interface_age], [0])
+m4_define([app_binary_age], [0])
+m4_define([app_version], [app_major_ver.app_minor_ver.app_patch_ver])
+
+m4_define([app_lt_release], [app_major_ver.app_minor_ver])
+m4_define([app_lt_current],
+	[m4_eval(app_minor_ver * 100 + app_patch_ver - app_interface_age)])
+m4_define([app_lt_revision], [app_interface_age])
+m4_define([app_lt_age],
+	[m4_eval(app_binary_age - app_interface_age)])
+
+AC_INIT(SDL_PangoDraw, app_version,
+	[https://github.com/ZoogieZork/SDL_PangoDraw])
+AC_CONFIG_SRCDIR(src/SDL_PangoDraw.c)
+AM_INIT_AUTOMAKE
+AM_SILENT_RULES
+
+MAJOR_VERSION=app_major_ver
+MINOR_VERSION=app_minor_ver
+MICRO_VERSION=app_patch_ver
+INTERFACE_AGE=app_interface_age
+BINARY_AGE=app_binary_age
+VERSION=app_version
 
 AC_SUBST(MAJOR_VERSION)
 AC_SUBST(MINOR_VERSION)
@@ -28,10 +44,10 @@ AC_SUBST(VERSION)
 
 # libtool versioning
 
-LT_RELEASE=$MAJOR_VERSION.$MINOR_VERSION
-LT_CURRENT=`expr $MINOR_VERSION \* 100 + $MICRO_VERSION - $INTERFACE_AGE`
-LT_REVISION=$INTERFACE_AGE
-LT_AGE=`expr $BINARY_AGE - $INTERFACE_AGE`
+LT_RELEASE=app_lt_release
+LT_CURRENT=app_lt_current
+LT_REVISION=app_lt_revision
+LT_AGE=app_lt_age
 
 AC_SUBST(LT_RELEASE)
 AC_SUBST(LT_CURRENT)
@@ -42,10 +58,6 @@ AC_SUBST(LT_AGE)
 
 AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
-
-# Setup for automake
-
-AM_INIT_AUTOMAKE(SDL_PangoDraw, $VERSION, )
 
 # Check for tools
 
