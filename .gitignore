@@ -51,6 +51,23 @@
 /VisualC2003/testbench/Setup/Debug
 /VisualC2003/testbench/Setup/Release
 
+# /config/
+/config/argz.m4
+/config/config.guess
+/config/config.sub
+/config/depcomp
+/config/install-sh
+/config/libtool.m4
+/config/lt*.m4
+/config/ltmain.sh
+/config/missing
+
+# /m4/
+/m4/argz.m4
+/m4/libtool.m4
+/m4/pkg.m4
+/m4/lt*.m4
+
 # /docs/
 /docs/Doxyfile
 /docs/Makefile
@@ -72,4 +89,5 @@
 /test/ltmain.sh
 /test/missing
 /test/mkinstalldirs
+
 

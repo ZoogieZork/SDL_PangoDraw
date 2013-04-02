@@ -24,7 +24,9 @@ m4_define([app_lt_age],
 
 AC_INIT(SDL_PangoDraw, app_version,
 	[https://github.com/ZoogieZork/SDL_PangoDraw])
-AC_CONFIG_SRCDIR(src/SDL_PangoDraw.c)
+AC_CONFIG_AUX_DIR([config])
+AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_SRCDIR([src/SDL_PangoDraw.c])
 AM_INIT_AUTOMAKE
 AM_SILENT_RULES
 
