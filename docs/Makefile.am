@@ -1,4 +1,6 @@
-docs: Doxyfile ../src/SDL_Pango.c ../src/SDL_Pango.h ../configure.ac
-	doxygen Doxyfile
 
-EXTRA_DIST = html
+include doxygen.am
+
+MOSTLYCLEANFILES = $(DX_CLEANFILES) texput.log
+
+EXTRA_DIST = $(DX_CLEAN_HTML)

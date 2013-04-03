@@ -101,5 +101,14 @@ LIBS="$LIBS $SDL_LIBS"
 
 AC_CONFIG_FILES([Makefile src/Makefile SDL_PangoDraw.pc docs/Makefile docs/Doxyfile VisualC2003/Makefile Wix/Makefile Wix/merge_module.xml Wix/dev.xml Wix/testbench.xml])
 
+# Enable Doxygen targets
+
+DX_DOXYGEN_FEATURE(ON)
+DX_DOT_FEATURE(OFF)
+DX_HTML_FEATURE(ON)
+DX_PDF_FEATURE(OFF)
+DX_PS_FEATURE(OFF)
+DX_INIT_DOXYGEN([SDL_PangoDraw], [Doxyfile], [.])
+
 # Finally create all the generated files
 AC_OUTPUT
