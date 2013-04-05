@@ -235,7 +235,7 @@
 //! non-zero if initialized
 static int IS_INITIALIZED = 0;
 
-#define DEFAULT_FONT_FAMILY "Sans"
+#define DEFAULT_FONT_FAMILY "sans-serif"
 #define DEFAULT_FONT_SIZE 12
 #define DEFAULT_DPI 96
 #define _MAKE_FONT_NAME(family, size) family " " #size
