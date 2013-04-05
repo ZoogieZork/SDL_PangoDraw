@@ -288,6 +288,59 @@ typedef struct _contextImpl {
 } contextImpl;
 
 
+const SDLPangoDraw_Matrix _MATRIX_WHITE_BACK
+    = {255, 0, 0, 0,
+       255, 0, 0, 0,
+       255, 0, 0, 0,
+       255, 255, 0, 0,};
+
+/*!
+    Specifies white back and black letter.
+*/
+const SDLPangoDraw_Matrix *MATRIX_WHITE_BACK = &_MATRIX_WHITE_BACK;
+
+const SDLPangoDraw_Matrix _MATRIX_BLACK_BACK
+    = {0, 255, 0, 0,
+       0, 255, 0, 0,
+       0, 255, 0, 0,
+       255, 255, 0, 0,};
+/*!
+    Specifies black back and white letter.
+*/
+const SDLPangoDraw_Matrix *MATRIX_BLACK_BACK = &_MATRIX_BLACK_BACK;
+
+const SDLPangoDraw_Matrix _MATRIX_TRANSPARENT_BACK_BLACK_LETTER
+    = {0, 0, 0, 0,
+       0, 0, 0, 0,
+       0, 0, 0, 0,
+       0, 255, 0, 0,};
+/*!
+    Specifies transparent back and black letter.
+*/
+const SDLPangoDraw_Matrix *MATRIX_TRANSPARENT_BACK_BLACK_LETTER = &_MATRIX_TRANSPARENT_BACK_BLACK_LETTER;
+
+const SDLPangoDraw_Matrix _MATRIX_TRANSPARENT_BACK_WHITE_LETTER
+    = {255, 255, 0, 0,
+       255, 255, 0, 0,
+       255, 255, 0, 0,
+       0, 255, 0, 0,};
+/*!
+    Specifies transparent back and white letter.
+*/
+const SDLPangoDraw_Matrix *MATRIX_TRANSPARENT_BACK_WHITE_LETTER = &_MATRIX_TRANSPARENT_BACK_WHITE_LETTER;
+
+const SDLPangoDraw_Matrix _MATRIX_TRANSPARENT_BACK_TRANSPARENT_LETTER
+    = {255, 255, 0, 0,
+       255, 255, 0, 0,
+       255, 255, 0, 0,
+       0, 0, 0, 0,};
+/*!
+    Specifies transparent back and transparent letter.
+    This is useful for KARAOKE like rendering.
+*/
+const SDLPangoDraw_Matrix *MATRIX_TRANSPARENT_BACK_TRANSPARENT_LETTER = &_MATRIX_TRANSPARENT_BACK_TRANSPARENT_LETTER;
+
+
 /*!
     Initialize the Glib and Pango API.
     This must be called before using other functions in this library,
