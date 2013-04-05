@@ -875,7 +875,9 @@ SDLPangoDraw_Draw(
     width = PANGO_PIXELS (logical_rect.width);
     height = PANGO_PIXELS (logical_rect.height);
 
-    SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, 0, 0, 0, 0));
+    if(width && height) {
+	SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, 0, 0, 0, 0));
+    }
 
     if((! context->tmp_ftbitmap) || context->tmp_ftbitmap->width < width
 	|| context->tmp_ftbitmap->rows < height)
