@@ -727,16 +727,23 @@ SDLPangoDraw_CopyFTBitmapToSurface(
     int x = rect->x;
     int y = rect->y;
 
+    if(x < 0) {
+	width += x; x = 0;
+    }
     if(x + width > surface->w) {
 	width = surface->w - x;
-	if(width <= 0)
-	    return;
+    }
+    if(width <= 0)
+	return;
+
+    if(y < 0) {
+	height += y; y = 0;
     }
     if(y + height > surface->h) {
 	height = surface->h - y;
-	if(height <= 0)
-	    return;
     }
+    if(height <= 0)
+	return;
 
     if(SDL_LockSurface(surface)) {
 	SDL_SetError("surface lock failed");
