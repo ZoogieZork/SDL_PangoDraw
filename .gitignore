@@ -25,6 +25,7 @@
 /ltmain.sh
 /missing
 /mkinstalldirs
+/sdl_pangodraw-*
 
 # /Wix/
 /Wix/*.msi
