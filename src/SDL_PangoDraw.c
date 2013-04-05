@@ -778,13 +778,9 @@ SDLPangoDraw_CopyFTBitmapToSurface(
     SDL_UnlockSurface(surface);
 }
 
-/*!
-    Create a context which contains Pango objects.
 
-    @return A pointer to the context as a SDLPangoDraw_Context*.
-*/
 SDLPangoDraw_Context*
-SDLPangoDraw_CreateContext()
+SDLPangoDraw_CreateContext_GivenFontDesc(const char* font_desc)
 {
     SDLPangoDraw_Context *context = g_malloc(sizeof(SDLPangoDraw_Context));
     G_CONST_RETURN char *charset;
@@ -798,8 +794,7 @@ SDLPangoDraw_CreateContext()
     pango_context_set_language (context->context, pango_language_from_string (charset));
     pango_context_set_base_dir (context->context, PANGO_DIRECTION_LTR);
 
-    context->font_desc = pango_font_description_from_string(
-	MAKE_FONT_NAME (DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE));
+    context->font_desc = pango_font_description_from_string(font_desc);
 
     context->layout = pango_layout_new (context->context);
 
@@ -814,6 +809,17 @@ SDLPangoDraw_CreateContext()
     context->min_width = 0;
 
     return context;
+}
+
+/*!
+    Create a context which contains Pango objects.
+
+    @return A pointer to the context as a SDLPangoDraw_Context*.
+*/
+SDLPangoDraw_Context*
+SDLPangoDraw_CreateContext()
+{
+    SDLPangoDraw_CreateContext_GivenFontDesc(MAKE_FONT_NAME(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE));
 }
 
 /*!
@@ -1110,6 +1116,20 @@ SDLPangoDraw_SetMarkup(
     pango_layout_set_font_description (context->layout, context->font_desc);
 }
 
+void
+SDLPangoDraw_SetText_GivenAlignment(
+    SDLPangoDraw_Context *context,
+    const char *text,
+    int length,
+    SDLPangoDraw_Alignment alignment)
+{
+    pango_layout_set_attributes(context->layout, NULL);
+    pango_layout_set_text (context->layout, text, length);
+    pango_layout_set_auto_dir (context->layout, TRUE);
+    pango_layout_set_alignment (context->layout, alignment);
+    pango_layout_set_font_description (context->layout, context->font_desc);
+}
+
 /*!
     Set plain text to context.
     Text must be utf-8.
@@ -1124,11 +1144,7 @@ SDLPangoDraw_SetText(
     const char *text,
     int length)
 {
-    pango_layout_set_attributes(context->layout, NULL);
-    pango_layout_set_text (context->layout, text, length);
-    pango_layout_set_auto_dir (context->layout, TRUE);
-    pango_layout_set_alignment (context->layout, PANGO_ALIGN_LEFT);
-    pango_layout_set_font_description (context->layout, context->font_desc);
+    SDLPangoDraw_SetText_GivenAlignment(context, text, length, SDLPANGODRAW_ALIGN_LEFT);
 }
 
 /*!

@@ -80,12 +80,20 @@ typedef enum {
     SDLPANGODRAW_DIRECTION_NEUTRAL	/*! Neutral */
 } SDLPangoDraw_Direction;
 
-
+/*!
+    Specifies alignment of text. See Pango reference for detail
+*/
+typedef enum {
+    SDLPANGODRAW_ALIGN_LEFT,
+    SDLPANGODRAW_ALIGN_CENTER,
+    SDLPANGODRAW_ALIGN_RIGHT
+} SDLPangoDraw_Alignment;
 
 extern DECLSPEC int SDLCALL SDLPangoDraw_Init();
 
 extern DECLSPEC int SDLCALL SDLPangoDraw_WasInit();
 
+extern DECLSPEC SDLPangoDraw_Context* SDLCALL SDLPangoDraw_CreateContext_GivenFontDesc(const char* font_desc);
 extern DECLSPEC SDLPangoDraw_Context* SDLCALL SDLPangoDraw_CreateContext();
 
 extern DECLSPEC void SDLCALL SDLPangoDraw_FreeContext(
@@ -127,6 +135,12 @@ extern DECLSPEC void SDLCALL SDLPangoDraw_SetMarkup(
     SDLPangoDraw_Context *context,
     const char *markup,
     int length);
+
+extern DECLSPEC void SDLCALL SDLPangoDraw_SetText_GivenAlignment(
+    SDLPangoDraw_Context *context,
+    const char *text,
+    int length,
+    SDLPangoDraw_Alignment alignment);
 
 extern DECLSPEC void SDLCALL SDLPangoDraw_SetText(
     SDLPangoDraw_Context *context,
