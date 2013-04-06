@@ -1,6 +1,7 @@
 /* vim: set noet ai sw=4 sts=4 ts=8: */
-/*  testbench.cpp -- A companion library to SDL for working with Pango.
+/*  testbench.cpp -- SDL_PangoDrawDraw test
     Copyright (C) 2004 NAKAMURA Ken'ichi
+    Copyright (C) 2013 Michael Imamura
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -17,11 +18,12 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA.
 */
 
-#include "SDL_Pango.h"
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-SDLPango_Context *context;
+#include <SDL_PangoDraw.h>
+
+SDLPangoDraw_Context *context;
 char *text;
 
 int resizeLoop(SDL_Surface **framebuf)
@@ -39,9 +41,9 @@ int resizeLoop(SDL_Surface **framebuf)
 
 	case SDL_KEYUP:
 	    if(event.key.keysym.sym == SDLK_RETURN)
-		SDLPango_SetMarkup(context, text, -1);
+		SDLPangoDraw_SetMarkup(context, text, -1);
 	    else if(event.key.keysym.sym == SDLK_SPACE)
-		SDLPango_SetText(context, text, -1);
+		SDLPangoDraw_SetText(context, text, -1);
 	    break;
 
 	default:
@@ -78,49 +80,49 @@ int main(int argc, char *argv[])
 	exit(1);
 
     SDL_Init(SDL_INIT_VIDEO);
-    SDLPango_Init();
+    SDLPangoDraw_Init();
 
     framebuf = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE | SDL_RESIZABLE);
 
-    context = SDLPango_CreateContext();
+    context = SDLPangoDraw_CreateContext();
 
 #ifdef SET_DPI
-    SDLPango_SetDpi(context, 200.0, 200.0);
+    SDLPangoDraw_SetDpi(context, 200.0, 200.0);
 #endif
 
-    SDLPango_SetDefaultColor(context, MATRIX_TRANSPARENT_BACK_WHITE_LETTER);
+    SDLPangoDraw_SetDefaultColor(context, MATRIX_TRANSPARENT_BACK_WHITE_LETTER);
 
-    SDLPango_SetMinimumSize(context, 640, 0);
+    SDLPangoDraw_SetMinimumSize(context, 640, 0);
 
 #ifdef SET_BASE_DIRECTION
-    SDLPango_SetBaseDirection(context, SDLPANGO_DIRECTION_RTL);
+    SDLPangoDraw_SetBaseDirection(context, SDLPANGO_DIRECTION_RTL);
 #endif
 
     text = readFile(argv[1]);
 
     surface = NULL;
-    SDLPango_SetMarkup(context, text, -1);
+    SDLPangoDraw_SetMarkup(context, text, -1);
 
     while(resizeLoop(&framebuf)) {
 	SDL_Surface *surface;
 
-	SDLPango_SetMinimumSize(context, framebuf->w, 0);
+	SDLPangoDraw_SetMinimumSize(context, framebuf->w, 0);
 
 #ifdef GET_LAUOUT_WIDTH
 	{
 	    int w, h;
-	    w = SDLPango_GetLayoutWidth(context);
-	    h = SDLPango_GetLayoutHeight(context);
+	    w = SDLPangoDraw_GetLayoutWidth(context);
+	    h = SDLPangoDraw_GetLayoutHeight(context);
 	}
 #endif
 
 #ifdef CREATE_SURFACE_DRAW
-	surface = SDLPango_CreateSurfaceDraw(context);
+	surface = SDLPangoDraw_CreateSurfaceDraw(context);
 #else
 	surface = SDL_CreateRGBSurface(SDL_SWSURFACE, framebuf->w, framebuf->h,
 	    32, (Uint32)(255 << (8 * 3)), (Uint32)(255 << (8 * 2)),
 	    (Uint32)(255 << (8 * 1)), 255);
-	SDLPango_Draw(context, surface, 0, 0);
+	SDLPangoDraw_Draw(context, surface, 0, 0);
 #endif
 
 	SDL_FillRect(framebuf, NULL, SDL_MapRGBA(framebuf->format, 0, 0, 0, 0));
@@ -132,7 +134,7 @@ int main(int argc, char *argv[])
 
     free(text);
 
-    SDLPango_FreeContext(context);
+    SDLPangoDraw_FreeContext(context);
 
     SDL_Quit();
     return 0;

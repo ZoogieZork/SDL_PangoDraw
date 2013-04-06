@@ -100,7 +100,7 @@ PKG_CHECK_MODULES(SDL, [sdl >= 1.2.4])
 CFLAGS="$CFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS"
 
-AC_CONFIG_FILES([Makefile src/Makefile SDL_PangoDraw.pc docs/Makefile docs/Doxyfile VisualC2003/Makefile Wix/Makefile Wix/merge_module.xml Wix/dev.xml Wix/testbench.xml])
+AC_CONFIG_FILES([Makefile src/Makefile SDL_PangoDraw.pc docs/Makefile docs/Doxyfile VisualC2003/Makefile Wix/Makefile Wix/merge_module.xml Wix/dev.xml Wix/testbench.xml test/Makefile])
 
 # Enable Doxygen targets
 

@@ -2,7 +2,7 @@
 ACLOCAL_AMFLAGS = -I m4 --install ${ACLOCAL_FLAGS}
 AUTOMAKE_OPTIONS = foreign
 
-SUBDIRS = src docs
+SUBDIRS = src docs test
 DIST_SUBDIRS = src docs VisualC2003
 
 EXTRA_DIST = \

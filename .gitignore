@@ -81,16 +81,7 @@
 /src/Makefile.in
 
 # /test/
+/test/Makefile
 /test/Makefile.in
-/test/aclocal.m4
-/test/autom4te.cache
-/test/config.guess
-/test/config.sub
-/test/configure
-/test/depcomp
-/test/install-sh
-/test/ltmain.sh
-/test/missing
-/test/mkinstalldirs
-
+/test/testbench
 
