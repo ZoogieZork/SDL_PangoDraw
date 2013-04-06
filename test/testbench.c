@@ -1,3 +1,4 @@
+/* vim: set noet ai sw=4 sts=4 ts=8: */
 /*  testbench.cpp -- A companion library to SDL for working with Pango.
     Copyright (C) 2004 NAKAMURA Ken'ichi
 
