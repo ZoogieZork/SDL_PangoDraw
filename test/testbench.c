@@ -76,8 +76,10 @@ int main(int argc, char *argv[])
 {
     SDL_Surface *framebuf;
     SDL_Surface *surface;
-    if(argc == 1)
+    if(argc == 1) {
+	fprintf(stderr, "Usage: %s markup.txt\n", argv[0]);
 	exit(1);
+    }
 
     SDL_Init(SDL_INIT_VIDEO);
     SDLPangoDraw_Init();
