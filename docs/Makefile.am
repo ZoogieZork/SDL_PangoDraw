@@ -1,5 +1,5 @@
 
-DX_SOURCES = ../src/SDL_PangoDraw.c ../src/SDL_PangoDraw.h
+DX_SRCS = ../src/SDL_PangoDraw.c ../src/SDL_PangoDraw.h
 
 include doxygen.am
 
