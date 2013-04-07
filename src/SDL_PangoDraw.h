@@ -70,18 +70,18 @@ extern const SDLPangoDraw_Matrix *MATRIX_TRANSPARENT_BACK_WHITE_LETTER;
 extern const SDLPangoDraw_Matrix *MATRIX_TRANSPARENT_BACK_TRANSPARENT_LETTER;
 
 /*!
-    Specifies direction of text. See Pango reference for detail
+    Specifies direction of text. See Pango reference for details.
 */
 typedef enum {
-    SDLPANGODRAW_DIRECTION_LTR, /*! Left to right */
-    SDLPANGODRAW_DIRECTION_RTL, /*! Right to left */
-    SDLPANGODRAW_DIRECTION_WEAK_LTR,    /*! Left to right (weak) */
-    SDLPANGODRAW_DIRECTION_WEAK_RTL,    /*! Right to left (weak) */
-    SDLPANGODRAW_DIRECTION_NEUTRAL	/*! Neutral */
+    SDLPANGODRAW_DIRECTION_LTR, /*!< Left to right */
+    SDLPANGODRAW_DIRECTION_RTL, /*!< Right to left */
+    SDLPANGODRAW_DIRECTION_WEAK_LTR,    /*!< Left to right (weak) */
+    SDLPANGODRAW_DIRECTION_WEAK_RTL,    /*!< Right to left (weak) */
+    SDLPANGODRAW_DIRECTION_NEUTRAL	/*!< Neutral */
 } SDLPangoDraw_Direction;
 
 /*!
-    Specifies alignment of text. See Pango reference for detail
+    Specifies alignment of text. See Pango reference for details.
 */
 typedef enum {
     SDLPANGODRAW_ALIGN_LEFT,

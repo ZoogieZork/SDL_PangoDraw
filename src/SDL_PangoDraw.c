@@ -609,7 +609,7 @@ drawLine(
 }
 
 /*!
-    Innter function of Pango. Stolen from GDK.
+    Inner function of Pango. Stolen from GDK.
 
     @param *item [in] The item to get property
     @param *uline [out] Kind of underline
@@ -851,8 +851,9 @@ SDLPangoDraw_FreeContext(SDLPangoDraw_Context *context)
 }
 
 /*!
-    Specify Arguments when create a surface.
-    When SDL_PangoDraw creates a surface, the arguments are used.
+    Specify arguments to use when creating a surface.
+    SDLPangoDraw_CreateSurfaceDraw will use these arguments to create the
+    SDL surface.
 
     @param *context [i/o] Context
     @param flags [in] Same as SDL_CreateRGBSurface()
@@ -913,10 +914,12 @@ SDL_Surface * SDLPangoDraw_CreateSurfaceDraw(
 }
 
 /*!
-    Draw text on a existing surface.
+    Draw text on an existing surface.
+    The text must have been previously set via SDLPangoDraw_SetMarkup or
+    SDLPangoDraw_SetText.
 
     @param *context [in] Context
-    @param *surface [i/o] Surface to draw on it
+    @param *surface [i/o] Surface to draw on
     @param x [in] X of left-top of drawing area
     @param y [in] Y of left-top of drawing area
 */
@@ -1103,12 +1106,11 @@ SDLPangoDraw_GetLayoutHeight(
 }
 
 /*!
-    Set markup text to context.
-    Text must be utf-8.
-    Markup format is same as pango.
+    Set the markup text to draw.
+    Markup format is same as Pango.
 
     @param *context [i/o] Context
-    @param *markup [in] Markup text
+    @param *markup [in] Markup text (must be in UTF-8).
     @param length [in] Text length. -1 means NULL-terminated text.
 */
 void
@@ -1123,6 +1125,16 @@ SDLPangoDraw_SetMarkup(
     pango_layout_set_font_description (context->layout, context->font_desc);
 }
 
+/*!
+    Set the plain (non-markup) text to draw, using a specific text alignment.
+    This only applies if the minimum size has been set using
+    SDLPangoDraw_SetMinimumSize.
+
+    @param *context [i/o] Context
+    @param *text [in] The raw text (must be in UTF-8).
+    @param length [in] Text length. -1 means NULL-terminated text.
+    @param alignment The text alignment.
+*/
 void
 SDLPangoDraw_SetText_GivenAlignment(
     SDLPangoDraw_Context *context,
@@ -1138,11 +1150,10 @@ SDLPangoDraw_SetText_GivenAlignment(
 }
 
 /*!
-    Set plain text to context.
-    Text must be utf-8.
+    Set the plain (non-markup) text to draw.
 
     @param *context [i/o] Context
-    @param *text [in] Plain text
+    @param *text [in] The raw text (must be in UTF-8).
     @param length [in] Text length. -1 means NULL-terminated text.
 */
 void
@@ -1155,7 +1166,7 @@ SDLPangoDraw_SetText(
 }
 
 /*!
-    Set DPI to context.
+    Set the DPI.
 
     @param *context [i/o] Context
     @param dpi_x [in] X dpi
@@ -1175,7 +1186,8 @@ SDLPangoDraw_SetDpi(
     @param *context [i/o] Context
     @param *language_tag [in] A RFC-3066 format language tag 
 */
-void SDLCALL SDLPangoDraw_SetLanguage(
+void SDLCALL
+SDLPangoDraw_SetLanguage(
     SDLPangoDraw_Context *context,
     const char *language_tag)
 {
@@ -1188,7 +1200,8 @@ void SDLCALL SDLPangoDraw_SetLanguage(
     @param *context [i/o] Context
     @param direction [in] Direction
 */
-void SDLCALL SDLPangoDraw_SetBaseDirection(
+void SDLCALL
+SDLPangoDraw_SetBaseDirection(
     SDLPangoDraw_Context *context,
     SDLPangoDraw_Direction direction)
 {
@@ -1224,7 +1237,8 @@ void SDLCALL SDLPangoDraw_SetBaseDirection(
     @param *context [in] Context
     @return Font map
 */
-PangoFontMap* SDLCALL SDLPangoDraw_GetPangoFontMap(
+PangoFontMap* SDLCALL
+SDLPangoDraw_GetPangoFontMap(
     SDLPangoDraw_Context *context)
 {
     return context->font_map;
@@ -1236,7 +1250,8 @@ PangoFontMap* SDLCALL SDLPangoDraw_GetPangoFontMap(
     @param *context [in] Context
     @return Font description
 */
-PangoFontDescription* SDLCALL SDLPangoDraw_GetPangoFontDescription(
+PangoFontDescription* SDLCALL
+SDLPangoDraw_GetPangoFontDescription(
     SDLPangoDraw_Context *context)
 {
     return context->font_desc;
@@ -1248,7 +1263,8 @@ PangoFontDescription* SDLCALL SDLPangoDraw_GetPangoFontDescription(
     @param *context [in] Context
     @return Layout
 */
-PangoLayout* SDLCALL SDLPangoDraw_GetPangoLayout(
+PangoLayout* SDLCALL
+SDLPangoDraw_GetPangoLayout(
     SDLPangoDraw_Context *context)
 {
     return context->layout;
