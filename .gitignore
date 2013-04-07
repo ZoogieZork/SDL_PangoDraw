@@ -71,6 +71,7 @@
 
 # /docs/
 /docs/*.log
+/docs/*.tag
 /docs/Doxyfile
 /docs/Makefile
 /docs/Makefile.in

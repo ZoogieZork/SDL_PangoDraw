@@ -149,8 +149,9 @@ doxygen-run: @DX_DOCDIR@/@PACKAGE@.tag
 
 doxygen-doc: doxygen-run $(DX_PS_GOAL) $(DX_PDF_GOAL)
 
-@DX_DOCDIR@/@PACKAGE@.tag: $(DX_CONFIG) $(pkginclude_HEADERS)
+@DX_DOCDIR@/@PACKAGE@.tag: $(DX_CONFIG) $(DX_SOURCES) $(pkginclude_HEADERS)
 	$(DX_ENV) $(DX_DOXYGEN) $(srcdir)/$(DX_CONFIG)
+	$(AM_V_at)touch $@
 
 DX_CLEANFILES = \
 	@DX_DOCDIR@/@PACKAGE@.tag \
