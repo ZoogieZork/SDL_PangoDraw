@@ -23,65 +23,50 @@
 
     \section intro Introduction
 
-    Pango is the text rendering engine of GNOME 2.x. SDL_PangoDraw connects the 
-    engine to SDL. In Windows, pre-built binary package (MSI and merge module) 
-    is provided.
+    Pango is a cross-platform text layout engine that provides strong
+    multi-lingual support and simple HTML-like markup to style text.
 
-    \subsection dist Distribution
-
-    If you are a game software developer, you should know the difficulties of 
-    distribution. So I will start to introduce SDL_PangoDraw from the viewpoint 
-    of distribution.
-
-    In Un*x, SDL_PangoDraw is hard to use as system-independent module, because 
-    it depends on fontconfig and Pango which are designed as system-singleton 
-    modules. If you use SDL_PangoDraw, your software will require those modules 
-    installed to target system. If your software is shipped as shrink-wrap 
-    package, it may cause much problem on your support desk. You should 
-    carefully design your installation process.
-
-    In Windows, SDL_PangoDraw is distributed as "merge module" which contains 
-    fontconfig and Pango. Those binaries are modified as side-by-side components.
-    You should use Windows Installer and merge the module 
-    on your MSI package. The merge module not only contains files, but also includes 
-    custom action which must be run at installation.
+    GNOME 2 and 3 both use Pango for text rendering, as does Firefox on Linux.
+    SDL_PangoDraw provides an API to use Pango to render the text in your
+    SDL application.
 
     \subsection api High-level API
 
-    From the viewpoint of text rendering, the heart of SDL_PangoDraw is high-level API. 
-    Other text rendering APIs, like DrawText() of Windows, font and text must be 
-    specified separately. In SDL_PangoDraw, font specification is embedded in text like 
-    HTML:
+    \note
+    SDL_PangoDraw is based on the SDL_Pango library by NAKAMURA Ken'ichi but
+    contains numerous fixes and API additions.
+    The function names have been changed to allow the two libraries to
+    coexist, but in general if you wish to port code from SDL_Pango to
+    SDL_PangoDraw you can simply change "SDLPango_" to "SDLPangoDraw_".
+
+    From the viewpoint of text rendering, the heart of SDL_PangoDraw is a
+    high-level API. Unlike other text rendering APIs (like DrawText() in
+    Windows) font and text must be specified separately.
+    In SDL_PangoDraw, font specification is embedded in text like HTML:
 
     \code
     <span font_family="Courier New"><i>This is Courier New and italic.</i></span>
     \endcode
 
-    Color, size, subscript/superscript, obliquing, weight, and other many features 
-    are also available in same way.
+    Color, size, subscript/superscript, obliquing, weight, and other many
+    features are also available in same way.
 
     \subsection i18n Internationalized Text
 
-    Internationalized text is another key feature. Text is specified by UTF-8. RTL 
-    script (Arabic and Hebrew) and complicated rendering (Arabic, Indic and Thai) are 
-    supported. You can see it with GNOME 2.x.
+    Internationalized text is another key feature.
+    All text passed to SDL_PangoDraw must be encoded in UTF-8.
+    RTL script (Arabic and Hebrew) and complicated rendering (Arabic, Indic
+    and Thai) are supported.
 
     \section get Getting Started
 
-    \subsection getlatest Get latest files
+    \subsection getlatest Get latest sources
 
-    Get latest files from http://sourceforge.net/projects/sdlpango/ .
+    Get latest sources from https://github.com/ZoogieZork/SDL_PangoDraw
 
-    \subsection install Install Header and Library
+    \subsection install Build and install from source
 
-    In Windows and VS2003, I strongly recommend you to install MSI package. It contains Pango 
-    and fontconfig binaries which are modified as side-by-side components. It is 
-    nearly impossible to build them. (I spent much time to build them...)
-
-    In MinGW, I recommend you to use VS2003. Otherwise you may run into the maze of 
-    distribution. If you insist MinGW, you should use MinGW binary archive.
-
-    In Un*x, installation consists of: 
+    In Un*x, installation consists of:
 
     \code
     ./configure
@@ -89,59 +74,43 @@
     make install
     \endcode
 
-    \subsection inc Includes
-
-    To use SDL_PangoDraw functions in a C/C++ source code file, you must use the SDL_PangoDraw.h 
-    include file:
+    To see all available configure options:
 
     \code
-    #include "SDL_PangoDraw.h"
+    ./configure --help
     \endcode
 
-    In Windows, SDL_PangoDraw.h is installed on \c \%ProgramFiles\%\\SDL_PangoDraw \c Development\\include 
-    (usually \c C:\\Program \c Files\\SDL_PangoDraw \c Development\\include). You should add this 
-    directory to include path.
+    \subsection inc Includes
+
+    To use SDL_PangoDraw functions in a C/C++ source code file, you must use
+    the SDL_PangoDraw.h include file:
+
+    \code
+    #include <SDL_PangoDraw.h>
+    \endcode
 
     \subsection comp Compiling
 
-    In Un*x, to link with SDL_PangoDraw you should use sdl-config to get the required SDL 
-    compilation options. After that, compiling with SDL_PangoDraw is quite easy.
-
-    Note: Some systems may not have the SDL_PangoDraw library and include file in the same 
-    place as the SDL library and includes are located, in that case you will need to 
-    add more -I and -L paths to these command lines.
+    Both SDL and SDL_PangoDraw install pkg-config files to make compiling
+    and linking simple.
 
     Simple Example for compiling an object file:
 
     \code
-    cc -c `sdl-config --cflags` mysource.c
+    cc -c `pkg-config --cflags sdl SDL_PangoDraw` mysource.c
     \endcode
 
     Simple Example for linking an object file:
 
     \code
-    cc -o myprogram mysource.o `sdl-config --libs` -lSDL_PangoDraw
+    cc -o myprogram mysource.o `pkg-config --libs sdl SDL_PangoDraw`
     \endcode
-
-    Now myprogram is ready to run. 
-    
-    You can see a sample of autoconfiscation in 'test' directory.
-
-    In Windows, MSI package installs many dlls to \c \%ProgramFiles\%\\SDL_PangoDraw \c Development\\import_lib. 
-    To link with SDL_PangoDraw you should use SDL_PangoDraw.lib.
-
-    SDL_PangoDraw.dll depends on many dlls and other many files. Those dlls are installed on 
-    \c \%ProgramFiles\%\\SDL_PangoDraw \c Development\\bin. MSI package adds the directory to PATH environment 
-    variable.
 
     \section devel Development
 
     \subsection font Font Handling
 
     In Un*x, font handling depends on fontconfig of your system.
-
-    In Windows, local.conf of fontconfig is placed on \c \%ProgramFiles\%\\SDL_PangoDraw \c Development\\etc\\fonts. 
-    You should know about fontconfig's font cache mechanism.
 
     \subsection example Step-by-step Example
 
@@ -176,7 +145,7 @@
     \code
     int margin_x = 10;
     int margin_y = 10;
-    SDL_Surface *surface = SDL_CreateRGBSurface(SDL_SWSURFACE, 
+    SDL_Surface *surface = SDL_CreateRGBSurface(SDL_SWSURFACE,
 	w + margin_x * 2, h + margin_y * 2,
 	32, (Uint32)(255 << (8 * 3)), (Uint32)(255 << (8 * 2)),
 	(Uint32)(255 << (8 * 1)), 255);
@@ -200,24 +169,16 @@
     SDLPangoDraw_FreeContext(context);
     \endcode
 
-    You can see actual code in \c test/testbench.cpp.
+    More examples can be found in \c test/testbench.c.
 
-    \subsection pack Packaging
+    \section ack Acknowledgments
 
-    In Un*x, do it yourself.
+    SDL_PangoDraw is maintained by Michael Imamura <zoogie@lugatgt.org>.
+    It is a fork of the SDL_Pango project and the majority of the code is
+    unchanged from that project.
 
-    In Windows, font files must be installed on apprication folder (usually 
-    \c C:\\Program \c Files\\[Manufacturer]\\[ProductName]). The property of 
-    apprication folder must be \c TARGETDIR (this is default setting of VS2003). 
-    SDL.dll also must be installed on apprication folder. Add SDL_PangoDraw.msm to 
-    your MSI package.
-
-    \section ack Acknowledgment
-
-    SDL_PangoDraw is developed with financial assistance of Information-technology Promotion Agency, Japan.
-
-- NAKAMURA Ken'ichi <nakamura@sbp.fp.a.u-tokyo.ac.jp>
-    
+    SDL_Pango was developed by NAKAMURA Ken'ichi with financial assistance of
+    Information-technology Promotion Agency, Japan.
 */
 
 /*! @file
